@@ -1,20 +1,13 @@
 import RevealOnScroll from './RevealOnScroll';
-import SecureLink from './SecureLink';
 import { BackButton } from './ui/back-button';
 import { ContactSection } from './ContactSection';
 import { StatusBadge } from './ui/status-badge';
+import { ShinyButton } from './ui/shiny-button';
+import { galleryImages } from './data/masterclass-content';
 
 interface MasterclassPageProps {
   onNavigate: (page: string) => void;
 }
-
-const galleryImages = [
-  { span: 'md:col-span-2 md:row-span-2', height: 'h-[300px] md:h-auto', label: 'Разбор реальных кейсов', badge: 'Live' },
-  { span: '', height: 'h-[300px] md:h-auto' },
-  { span: '', height: 'h-[300px] md:h-auto' },
-  { span: 'md:col-span-2', height: 'h-[300px] md:h-auto', label: 'Торжественная часть' },
-  { span: '', height: 'h-[300px] md:h-auto' },
-];
 
 export default function MasterclassPage({ onNavigate }: MasterclassPageProps) {
   return (
@@ -71,14 +64,15 @@ export default function MasterclassPage({ onNavigate }: MasterclassPageProps) {
             </p>
           </div>
 
-          <a
+          <ShinyButton
             href="https://da-school.online/oplata_mk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-full md:w-auto px-6 md:px-8 py-3 md:py-4 font-bold !text-white transition-all duration-200 bg-brand-900 rounded-full hover:bg-brand-800 hover:shadow-lg hover:shadow-brand-900/20 hover:-translate-y-0.5 text-center text-sm sm:text-base"
+            isExternal
+            variant="primary"
+            className="w-full md:w-auto !py-4 md:!py-5 !px-8 text-sm md:text-base font-bold tracking-widest uppercase !rounded-full shadow-xl shadow-brand-900/20"
+            withArrow={false}
           >
             Забронировать место
-          </a>
+          </ShinyButton>
         </div>
       </RevealOnScroll>
 

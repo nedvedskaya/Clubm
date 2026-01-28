@@ -1,6 +1,7 @@
 import { Monitor, MapPin, Calendar as CalendarIcon } from "lucide-react";
 import { AuroraBackground } from "../ui/aurora-background";
 import { calendarData } from "../data/calendarEvents";
+import { sanitizeHTML } from "../../utils/security";
 
 interface ClubCalendarWidgetProps {
   onOpenCalendar: () => void;
@@ -56,7 +57,7 @@ export function ClubCalendarWidget({ onOpenCalendar }: ClubCalendarWidgetProps) 
                            <span className="text-[8px] font-bold text-white/50 uppercase tracking-widest">ФЕВ</span>
                         </div>
                         <div>
-                           <h3 className="text-lg font-black text-white uppercase leading-[0.9] mb-1.5" dangerouslySetInnerHTML={{ __html: ev.t.replace(/\n/g, '<br/>') }}></h3>
+                           <h3 className="text-lg font-black text-white uppercase leading-[0.9] mb-1.5" dangerouslySetInnerHTML={{ __html: sanitizeHTML(ev.t.replace(/\n/g, '<br/>')) }}></h3>
                            <div className="flex items-center gap-2 text-blue-200 font-medium text-xs">
                               {ev.type === 'ONLINE' ? (
                                 <Monitor className="w-3.5 h-3.5 text-blue-400" />

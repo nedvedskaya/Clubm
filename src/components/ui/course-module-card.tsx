@@ -4,6 +4,7 @@ import { StatusBadge } from "./status-badge";
 import { CheckListItem } from "./check-list-item";
 import { ShinyButton } from "./shiny-button";
 import { CourseModule } from "../data/courseModules";
+import { sanitizeHTML } from "../../utils/security";
 
 interface CourseModuleCardProps {
   module: CourseModule;
@@ -31,7 +32,7 @@ export function CourseModuleCard({ module }: CourseModuleCardProps) {
         <ul className="space-y-3 mb-6">
           {module.features.map((feature, idx) => (
             <CheckListItem key={idx}>
-               <span dangerouslySetInnerHTML={{ __html: feature }} />
+               <span dangerouslySetInnerHTML={{ __html: sanitizeHTML(feature) }} />
             </CheckListItem>
           ))}
         </ul>
@@ -65,7 +66,7 @@ export function CourseModuleCard({ module }: CourseModuleCardProps) {
             }`}
           >
             {module.content.map((item, idx) => (
-              <p key={idx} dangerouslySetInnerHTML={{ __html: item }} />
+              <p key={idx} dangerouslySetInnerHTML={{ __html: sanitizeHTML(item) }} />
             ))}
           </div>
         </details>

@@ -9,6 +9,7 @@ import { ClubHero } from './sections/ClubHero';
 import { ClubPainPoints } from './sections/ClubPainPoints';
 import { ClubRoadmap } from './sections/ClubRoadmap';
 import { ClubParticipation } from './sections/ClubParticipation';
+import { ContactSection } from './ContactSection';
 
 interface ClubPageProps {
   onNavigate: (page: string) => void;
@@ -49,39 +50,23 @@ export default function ClubPage({ onNavigate }: ClubPageProps) {
            <MembershipSection />
            
            <div className="mt-16 md:mt-24 pb-16 relative z-10">
-              <div className="text-center max-w-2xl mx-auto mb-10">
-                 <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Остались вопросы?</h3>
-                 <p className="text-slate-500 text-lg md:text-xl leading-relaxed max-w-lg mx-auto">
-                    Если вы не уверены, какой формат подойдет именно вам — напишите нам. Мы разберем вашу ситуацию и подскажем честно.
-                 </p>
-              </div>
-
-              <div className="flex flex-col items-center gap-4 max-w-md mx-auto">
-                <ShinyButton 
+              <ContactSection 
+                title="Остались вопросы?"
+                subtitle="Если вы не уверены, какой формат подойдет именно вам — напишите нам. Мы разберем вашу ситуацию и подскажем честно."
+                buttonText="Задать вопрос в WhatsApp"
+                href="https://wa.me/79951140299"
+                rateLimitKey="whatsapp-club-contact"
+              />
+              
+              <div className="flex flex-col items-center gap-4 max-w-md mx-auto mt-8">
+                 <p className="text-slate-400 text-sm font-medium">Или используйте Telegram бот</p>
+                 <ShinyButton 
                   href="https://t.me/manager_club_bot" 
                   isExternal 
                   variant="primary" 
-                  className="w-full py-5 text-sm md:text-base font-bold tracking-widest uppercase shadow-xl shadow-brand-900/20 !text-white rounded-2xl"
+                  className="w-full py-4 text-sm font-bold tracking-widest uppercase shadow-xl shadow-brand-900/20 !text-white rounded-2xl"
                 >
-                  Вступите в Метод
-                </ShinyButton>
-                
-                <ShinyButton 
-                  href="https://t.me/manager_club_bot"
-                  isExternal
-                  variant="brand" 
-                  className="w-full py-5 text-sm md:text-base font-bold tracking-widest uppercase !bg-[#0f172a] hover:!bg-[#1e293b] border-slate-800 !text-white rounded-2xl shadow-lg"
-                >
-                  Задать вопрос в Telegram
-                </ShinyButton>
-                
-                <ShinyButton 
-                  href="https://wa.me/79951140299" 
-                  isExternal
-                  variant="brand" 
-                  className="w-full py-5 text-sm md:text-base font-bold tracking-widest uppercase !bg-[#0f172a] hover:!bg-[#1e293b] border-slate-800 !text-white rounded-2xl shadow-lg"
-                >
-                  Задать вопрос в WhatsApp
+                  Вступить через Telegram
                 </ShinyButton>
               </div>
            </div>

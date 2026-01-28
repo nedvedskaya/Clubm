@@ -22,7 +22,7 @@ export function ContactSection({
 }: ContactSectionProps) {
   return (
     <RevealOnScroll className={cn("lg:col-span-12 mt-12", className)}>
-      <div className="p-8 md:p-10 relative overflow-hidden rounded-3xl bg-white/50 backdrop-blur-sm border border-slate-100 shadow-xl shadow-slate-200/40">
+      <div className="p-8 md:p-10 relative overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-200/40">
          {/* Background decoration */}
          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-brand-100 rounded-full blur-3xl opacity-50 pointer-events-none" />
          <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none" />

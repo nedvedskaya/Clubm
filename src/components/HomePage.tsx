@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import RevealOnScroll from './RevealOnScroll';
-import { ActionButton } from './ui/action-button';
+import { ShinyButton } from './ui/shiny-button';
 import { StatusBadge } from './ui/status-badge';
 import { GlassCard } from './ui/glass-card';
 import { SectionTitle } from './ui/section-title';
@@ -57,7 +57,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <p className="text-base md:text-lg text-slate-300 font-medium leading-relaxed max-w-2xl mb-8 border-l-2 border-white/10 pl-6">
                 Бизнес-сообщество для предпринимателей в автоиндустрии.
               </p>
-              <ActionButton variant="white">Узнать больше</ActionButton>
+              <ShinyButton 
+                variant="glass" 
+                className="bg-white/20 hover:bg-white/30 text-white !px-6 !py-3"
+                withArrow={false}
+              >
+                Узнать больше
+              </ShinyButton>
             </div>
           </div>
         </RevealOnScroll>
@@ -90,7 +96,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
 
             <div className="relative z-10 mt-6 md:mt-8">
-              <ActionButton variant="secondary">Смотреть программу</ActionButton>
+              <ShinyButton 
+                variant="glass"
+                className="bg-slate-200/50 hover:bg-slate-300/50 !text-slate-900 !px-6 !py-3 !rounded-xl"
+                withArrow={false}
+              >
+                Смотреть программу
+              </ShinyButton>
             </div>
           </GlassCard>
         </RevealOnScroll>
@@ -126,7 +138,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
 
             <div className="relative z-10 mt-6 md:mt-8">
-              <ActionButton variant="white">Забронировать</ActionButton>
+              <ShinyButton 
+                 variant="glass"
+                 className="bg-white/10 hover:bg-white/20 !text-white !px-6 !py-3 !rounded-xl"
+                 withArrow={false}
+              >
+                Забронировать
+              </ShinyButton>
             </div>
           </GlassCard>
         </RevealOnScroll>
