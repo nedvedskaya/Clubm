@@ -4,7 +4,7 @@ import { AuroraBackground } from "./aurora-background";
 import { ShinyButton } from "./shiny-button";
 
 interface MembershipFeature {
-  text: string;
+  text: React.ReactNode;
   highlight?: boolean;
 }
 

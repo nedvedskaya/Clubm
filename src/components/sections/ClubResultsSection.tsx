@@ -1,6 +1,7 @@
 import React from "react";
 import { SectionTitle } from "../ui/section-title";
 import { TrendingUp, Users, ShieldCheck, Zap, Globe } from "lucide-react";
+import { clubResults } from "../data/club-content";
 
 interface ResultCardProps {
   icon: React.ElementType;
@@ -37,43 +38,7 @@ function ResultCard({ icon: Icon, title, description, metric, delay = "0s" }: Re
 }
 
 export function ClubResultsSection() {
-  const results = [
-    {
-      icon: Zap,
-      title: "Выход из операционки",
-      description: "0% участия в продажах: ваши менеджеры продают лучше вас по готовым алгоритмам и методикам Клуба.",
-      metric: "0%",
-      delay: "0s"
-    },
-    {
-      icon: ShieldCheck,
-      title: "Бизнес работает, пока вы спите",
-      description: "Вы сможете оставить студию на 2 недели, и она не встанет, а продолжит генерировать прибыль.",
-      metric: "24/7",
-      delay: "0.1s"
-    },
-    {
-      icon: Users,
-      title: "Команда-актив",
-      description: "Сотрудники перестают быть «пассажирами» и начинают работать на показатели, а не просто «сидеть на проценте».",
-      metric: "KPI",
-      delay: "0.2s"
-    },
-    {
-      icon: TrendingUp,
-      title: "Рост выручки",
-      description: "Рост чека на 30% за счет доп продаж увеличит вашу чистую прибыль на 50–70%.",
-      metric: "+70%",
-      delay: "0.3s"
-    },
-    {
-      icon: Globe,
-      title: "Сильное окружение",
-      description: "Окружение, которое не даёт стоять на месте. Знакомство с людьми, которые уже прошли путь, по которому вы идёте.",
-      metric: "TOP",
-      delay: "0.4s"
-    }
-  ];
+  const icons = [Zap, ShieldCheck, Users, TrendingUp, Globe];
 
   return (
     <div className="pt-24 pb-12 relative">
@@ -91,8 +56,12 @@ export function ClubResultsSection() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-            {results.map((item, idx) => (
-              <ResultCard key={idx} {...item} />
+            {clubResults.map((item, idx) => (
+              <ResultCard 
+                key={idx} 
+                icon={icons[idx]}
+                {...item} 
+              />
             ))}
           </div>
        </div>

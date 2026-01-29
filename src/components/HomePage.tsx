@@ -5,14 +5,36 @@ import { StatusBadge } from './ui/status-badge';
 import { GlassCard } from './ui/glass-card';
 import { SectionTitle } from './ui/section-title';
 import { AuroraBackground } from './ui/aurora-background';
+import { useNavigation } from './NavigationContext';
+import { StructuredData } from './StructuredData';
+import { SEO } from './SEO';
 
-interface HomePageProps {
-  onNavigate: (page: string) => void;
-}
+export default function HomePage() {
+  const { navigate } = useNavigation();
 
-export default function HomePage({ onNavigate }: HomePageProps) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Клуб менеджеров детейлинга",
+    "url": "https://club-managers.ru",
+    "logo": "https://club-managers.ru/logo.png",
+    "description": "Сообщество предпринимателей в автобизнесе и профессиональное обучение менеджеров.",
+    "sameAs": [
+      "https://vk.com/club_managers",
+      "https://t.me/club_manageer"
+    ]
+  };
+
   return (
     <section>
+      <SEO 
+        title="Клуб менеджеров детейлинга | Главная"
+        description="Закрытое сообщество владельцев и менеджеров детейлинг-студий. Обучение продажам, готовые скрипты, мастер-классы и нетворкинг."
+        keywords="детейлинг, менеджер, обучение, продажи, автобизнес, CRM, скрипты продаж, клуб менеджеров"
+        type="website"
+      />
+      <StructuredData data={organizationSchema} />
+
       {/* Hero Header */}
       <RevealOnScroll className="text-center mb-6 md:mb-10 animate-float">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 md:mb-6">
@@ -28,7 +50,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         {/* Card 1: CLUB - PRIMARY */}
         <RevealOnScroll
           className="md:col-span-12"
-          onClick={() => onNavigate('page-club')}
+          onClick={() => navigate('page-club')}
         >
            <div className="relative group cursor-pointer overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#172554] p-8 md:p-14 shadow-2xl border border-white/5 flex flex-col justify-center h-full transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_20px_60px_-15px_rgba(30,58,138,0.3)]">
              {/* Background Glow Effects */}
@@ -71,12 +93,15 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         {/* Card 2: COURSE */}
         <RevealOnScroll
           className="md:col-span-7"
-          onClick={() => onNavigate('page-course')}
+          onClick={() => navigate('page-course')}
         >
           <GlassCard 
             variant="interactive" 
-            className="group flex flex-col justify-between h-full ring-2 ring-slate-200 hover:ring-slate-400"
+            className="group flex flex-col justify-between h-full ring-2 ring-slate-200 hover:ring-slate-400 relative overflow-hidden bg-white"
           >
+            {/* Grid Pattern Background */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
             <AuroraBackground 
               variant="slate" 
               className="absolute -top-10 -right-10 w-32 md:w-48 h-32 md:h-48 opacity-0 group-hover:opacity-60 transition-opacity duration-500" 
@@ -84,10 +109,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             
             <div className="relative z-10">
               <StatusBadge variant="default" className="mb-4 md:mb-5">
-                Онлайн-курс
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                  </span>
+                  Онлайн-курс
+                </div>
               </StatusBadge>
 
-              <SectionTitle className="mb-2 md:mb-3 !text-2xl sm:!text-3xl md:!text-4xl">
+              <SectionTitle className="mb-2 md:mb-3 !text-2xl sm:!text-3xl md:!text-4xl text-slate-900">
                 Профессиональный менеджер
               </SectionTitle>
               <p className="text-base md:text-lg text-slate-600 font-medium leading-relaxed">
@@ -98,7 +129,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             <div className="relative z-10 mt-6 md:mt-8">
               <ShinyButton 
                 variant="glass"
-                className="bg-slate-200/50 hover:bg-slate-300/50 !text-slate-900 !px-6 !py-3 !rounded-xl"
+                className="!bg-gradient-to-b !from-[#8E2828] !to-[#360808] !text-white !px-6 !py-3 !rounded-xl shadow-lg shadow-[#450a0a]/20 transition-all duration-300 group-hover:shadow-[#450a0a]/40 group-hover:-translate-y-0.5"
                 withArrow={false}
               >
                 Смотреть программу
@@ -110,7 +141,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         {/* Card 3: MASTERCLASS */}
         <RevealOnScroll
           className="md:col-span-5"
-          onClick={() => onNavigate('page-masterclass')}
+          onClick={() => navigate('page-masterclass')}
         >
           <GlassCard 
              className="group relative flex flex-col justify-between cursor-pointer overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 ring-2 ring-slate-700 hover:ring-slate-600 transition-all duration-500 hover:shadow-2xl h-full border-none"
@@ -123,10 +154,6 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-4 md:mb-5">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 shadow-lg shadow-red-500/50" />
-                </span>
                 <span className="text-xs font-extrabold uppercase tracking-widest text-slate-400">Offline</span>
               </div>
               <SectionTitle className="text-white mb-2 md:mb-3 leading-tight !text-2xl sm:!text-3xl md:!text-4xl">

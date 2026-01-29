@@ -1,9 +1,7 @@
-interface NavigationProps {
-  activePage: string;
-  onNavigate: (page: string) => void;
-}
+import { useNavigation } from './NavigationContext';
 
-export default function Navigation({ activePage, onNavigate }: NavigationProps) {
+export default function Navigation() {
+  const { activePage, navigate } = useNavigation();
   const navItems = [
     { id: 'page-home', label: 'Главная' },
     { id: 'page-club', label: 'Метод' },
@@ -16,7 +14,7 @@ export default function Navigation({ activePage, onNavigate }: NavigationProps) 
       {navItems.map((item) => (
         <button
           key={item.id}
-          onClick={() => onNavigate(item.id)}
+          onClick={() => navigate(item.id)}
           className={`relative px-3 sm:px-4 md:px-5 lg:px-6 py-2 md:py-3 rounded-full font-bold text-xs sm:text-sm md:text-base whitespace-nowrap transition-all duration-300 ${
             activePage === item.id
               ? 'bg-slate-900 text-white shadow-[0_8px_16px_rgba(0,0,0,0.18)]'

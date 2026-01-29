@@ -3,6 +3,8 @@
  * Защита от OWASP Top 10 уязвимостей и Rate Limiting
  */
 
+import DOMPurify from 'dompurify';
+
 // Rate Limiting Store
 interface RateLimitEntry {
   count: number;
@@ -13,7 +15,7 @@ const rateLimitStore = new Map<string, RateLimitEntry>();
 
 /**
  * Client-side Rate Limiting
- * Защита от спама и множественных кликов
+ * Защита от спама и множественных кликов (Anti-Bot)
  */
 export class RateLimiter {
   private static readonly CLEANUP_INTERVAL = 60000; // 1 минута
@@ -42,6 +44,7 @@ export class RateLimiter {
 
     // Проверяем лимит
     if (entry.count >= limit) {
+      console.warn(`[Security] Rate limit exceeded for ${key}`);
       return false;
     }
 
@@ -100,24 +103,28 @@ export class RateLimiter {
 }
 
 /**
- * Sanitize HTML для защиты от XSS
- * Используется только для доверенного контента
+ * Sanitize HTML для защиты от XSS (OWASP A03: Injection)
+ * Использует DOMPurify вместо регулярных выражений
  */
 export function sanitizeHTML(html: string): string {
-  // Базовая очистка - удаляем потенциально опасные теги и атрибуты
-  return html
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
-    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
-    .replace(/on\w+\s*=\s*[^\s>]*/gi, '')
-    .replace(/javascript:/gi, '');
+  if (typeof window === 'undefined') return html; // SSR check
+  
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'li', 'span'],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'style'],
+    FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'form', 'style'],
+    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover'],
+  });
 }
 
 /**
- * Валидация URL для защиты от Open Redirect
+ * Валидация URL для защиты от Open Redirect (OWASP A01)
  */
 export function isValidExternalURL(url: string): boolean {
   try {
+    // Handle relative URLs
+    if (url.startsWith('/')) return true;
+    
     const parsed = new URL(url);
     
     // Разрешенные протоколы
@@ -135,6 +142,9 @@ export function isValidExternalURL(url: string): boolean {
       'getcourse.ru',
       't.me',
       'telegram.me',
+      'tlgg.ru',
+      'vk.com',
+      'instagram.com'
     ];
 
     // Проверка для абсолютных URL
@@ -144,9 +154,10 @@ export function isValidExternalURL(url: string): boolean {
       );
       
       if (!isWhitelisted && parsed.protocol !== 'tel:' && parsed.protocol !== 'mailto:') {
-        console.warn(`Untrusted domain detected: ${parsed.hostname}`);
-        // В production можно вернуть false, для development - предупреждение
-        return true; // Разрешаем для гибкости
+        console.warn(`[Security] Untrusted domain detected: ${parsed.hostname}`);
+        // В production режиме блокируем
+        if (process.env.NODE_ENV === 'production') return false;
+        return true; 
       }
     }
 
@@ -158,49 +169,22 @@ export function isValidExternalURL(url: string): boolean {
 }
 
 /**
- * Debounce функция для защиты от множественных вызовов
- */
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number = 300
-): (...args: Parameters<T>) => void {
-  let timeout: number | undefined;
-
-  return function executedFunction(...args: Parameters<T>) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-
-    clearTimeout(timeout);
-    timeout = window.setTimeout(later, wait);
-  };
-}
-
-/**
- * Throttle функция для ограничения частоты вызовов
- */
-export function throttle<T extends (...args: any[]) => any>(
-  func: T,
-  limit: number = 1000
-): (...args: Parameters<T>) => void {
-  let inThrottle: boolean;
-
-  return function executedFunction(...args: Parameters<T>) {
-    if (!inThrottle) {
-      func(...args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
-}
-
-/**
- * Безопасное логирование (без чувствительных данных)
+ * Защита от Data Exposure: Очистка чувствительных данных перед логированием
  */
 export function secureLog(message: string, data?: any): void {
   if (process.env.NODE_ENV === 'development') {
-    console.log(`[Security] ${message}`, data);
+    // Deep clone to avoid mutating original data
+    const safeData = data ? JSON.parse(JSON.stringify(data)) : undefined;
+    
+    // Mask potential PII
+    if (safeData) {
+      if (safeData.email) safeData.email = '***@***.***';
+      if (safeData.phone) safeData.phone = '***-***-**-**';
+      if (safeData.password) safeData.password = '******';
+      if (safeData.token) safeData.token = '******';
+    }
+    
+    console.log(`[Security] ${message}`, safeData);
   }
 }
 
@@ -209,21 +193,12 @@ export function secureLog(message: string, data?: any): void {
  */
 export const CSP_DIRECTIVES = {
   'default-src': ["'self'"],
-  'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // React требует unsafe-inline
+  'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://mc.yandex.ru", "https://yastatic.net"], 
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-  'img-src': ["'self'", 'data:', 'https:', 'blob:'],
+  'img-src': ["'self'", 'data:', 'https:', 'blob:', "https://mc.yandex.ru"],
   'font-src': ["'self'", 'data:', 'https://fonts.gstatic.com'],
-  'connect-src': ["'self'", 'https://wa.me', 'https://api.whatsapp.com'],
+  'connect-src': ["'self'", 'https://wa.me', 'https://api.whatsapp.com', "https://mc.yandex.ru"],
   'frame-ancestors': ["'none'"], // Защита от clickjacking
   'base-uri': ["'self'"],
   'form-action': ["'self'"],
 };
-
-/**
- * Генерация nonce для inline scripts (опционально)
- */
-export function generateNonce(): string {
-  const array = new Uint8Array(16);
-  crypto.getRandomValues(array);
-  return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
-}

@@ -1,130 +1,107 @@
+import React from 'react';
 import RevealOnScroll from './RevealOnScroll';
 import { BackButton } from './ui/back-button';
 import { ContactSection } from './ContactSection';
 import { StatusBadge } from './ui/status-badge';
-import { ShinyButton } from './ui/shiny-button';
-import { galleryImages } from './data/masterclass-content';
+import { pastEvents } from './data/masterclass-content';
+import { ChevronsRight } from 'lucide-react';
+import { useNavigation } from './NavigationContext';
+import { SEO } from './SEO';
 
-interface MasterclassPageProps {
-  onNavigate: (page: string) => void;
-}
+export default function MasterclassPage() {
+  const { navigate } = useNavigation();
 
-export default function MasterclassPage({ onNavigate }: MasterclassPageProps) {
   return (
-    <section>
-      <BackButton onClick={() => onNavigate('page-home')} />
-
-      {/* Event Card */}
-      <RevealOnScroll className="max-w-4xl mx-auto bg-white rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100 flex flex-col md:flex-row">
-        {/* Left Column: Date & Meta */}
-        <div className="md:w-1/3 bg-slate-900 text-white p-6 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-brand-900/20 to-transparent pointer-events-none" />
-
-          <div className="relative z-10">
-            <StatusBadge variant="dark" size="sm" className="mb-6 md:mb-8 text-slate-300 border-white/10 bg-white/10">
-              Москва
-            </StatusBadge>
-            <div className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-none mb-2 tracking-tighter text-white">05</div>
-            <div className="text-lg sm:text-xl md:text-2xl font-medium text-slate-400 uppercase tracking-wide mb-1">Февраля</div>
-            <div className="text-xs sm:text-sm text-slate-500 font-semibold uppercase tracking-wider">Четверг, 2026</div>
-          </div>
-
-          <div className="relative z-10 mt-6 md:mt-0 pt-6 md:pt-8 border-t border-white/10">
-            <div className="flex items-center gap-3 mb-2">
-              <svg className="w-4 md:w-5 h-4 md:h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-wide text-slate-300">Сколково</span>
-            </div>
-            <p className="text-[10px] sm:text-xs text-slate-500">Официальная поддержка</p>
-          </div>
-        </div>
-
-        {/* Right Column: Content */}
-        <div className="md:w-2/3 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-white">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 md:mb-4 leading-tight">
-            Мастер-класс 5.0: <br />
-            <span className="text-brand-900">Продажи в детейлинге</span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 md:mb-8">
-            На мастер-классе мы на конкретных примерах разберем услуги детейлинга. Проработаем звонки, научимся делать допродажи и поймем, как правильно вести клиента.
-          </p>
-
-          {/* Price Alert */}
-          <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 md:p-5 mb-6 md:mb-8 flex items-start gap-3 md:gap-4">
-            <div className="mt-0.5 text-brand-900 shrink-0">
-              <svg className="w-4 md:w-5 h-4 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <p className="text-xs sm:text-sm md:text-base text-slate-600 font-medium leading-snug">
-              Уже сейчас забронируйте место по самой выгодной стоимости.
-            </p>
-          </div>
-
-          <ShinyButton
-            href="https://da-school.online/oplata_mk"
-            isExternal
-            variant="primary"
-            className="w-full md:w-auto !py-4 md:!py-5 !px-8 text-sm md:text-base font-bold tracking-widest uppercase !rounded-full shadow-xl shadow-brand-900/20"
-            withArrow={false}
-          >
-            Забронировать место
-          </ShinyButton>
-        </div>
-      </RevealOnScroll>
-
-      {/* Gallery Section */}
-      <RevealOnScroll className="max-w-4xl mx-auto mt-12 md:mt-16">
-        <div className="flex items-end justify-between mb-6 md:mb-8 px-2">
-          <div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-1 md:mb-2">Атмосфера</h3>
-            <p className="text-sm sm:text-base text-slate-500">Живые эмоции с прошлых встреч</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] sm:auto-rows-[220px] md:auto-rows-[240px]">
-          {galleryImages.map((img, idx) => (
-            <div
-              key={idx}
-              className={`${img.span} relative group rounded-2xl md:rounded-3xl overflow-hidden shadow-lg bg-slate-200`}
-            >
-              <img
-                src={`https://placehold.co/800x800/${idx === 0 ? '1e293b/ffffff' : idx === 1 ? '7f1d1d/ffffff' : idx === 2 ? 'cbd5e1/334155' : idx === 3 ? 'ffffff/1e293b' : 'e2e8f0/64748b'}?text=${
-                  idx === 0 ? 'Практика+в+зале' : idx === 1 ? 'Эмоции' : idx === 2 ? 'Нетворкинг' : idx === 3 ? 'Вручение+сертификатов' : 'Команда'
-                }`}
-                alt={`Gallery ${idx + 1}`}
-                className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0"
-              />
-              {img.label && (
-                <div
-                  className={`absolute inset-0 ${
-                    img.badge ? 'bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 md:opacity-0 group-hover:opacity-100' : 'bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100'
-                  } transition-opacity duration-300`}
-                >
-                  <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6">
-                    {img.badge && (
-                      <StatusBadge variant="white" size="sm" className="mb-2 text-black rounded-md">
-                        {img.badge}
-                      </StatusBadge>
-                    )}
-                    <p className="text-white font-bold text-base sm:text-lg md:text-xl">{img.label}</p>
-                  </div>
-                </div>
-              )}
-              {idx === 1 && <div className="absolute inset-0 bg-brand-900/20 group-hover:bg-transparent transition duration-300" />}
-            </div>
-          ))}
-        </div>
-      </RevealOnScroll>
-
-      {/* Блок связи с менеджерами */}
-      <ContactSection 
-        rateLimitKey="whatsapp-mc-contact"
-        className="max-w-4xl mx-auto mt-16"
+    <section className="bg-transparent min-h-screen relative overflow-hidden text-slate-900">
+      <SEO 
+        title="Мастер-классы | Клуб менеджеров"
+        description="Очные мероприятия и мастер-классы в Москве для менеджеров и владельцев детейлинг-центров. Нетворкинг и обмен опытом."
+        keywords="мастер-класс детейлинг, обучение москва, нетворкинг автобизнес, мероприятия для детейлеров"
       />
+
+      <BackButton onClick={() => navigate('page-home')} className="z-50" />
+
+      {/* Hero / Status Message */}
+      <RevealOnScroll className="relative z-10 pt-12 pb-16 px-4 md:pt-24 md:pb-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-8 leading-tight">
+            На ближайшее время <br className="hidden md:block"/>
+            <span className="text-slate-400">мастер-классов не запланировано</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+            Пока вы можете посмотреть, как проходили наши прошлые мероприятия.
+          </p>
+        </div>
+      </RevealOnScroll>
+
+      {/* Past Events Feed */}
+      <div className="relative z-10 space-y-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto">
+        {pastEvents.map((event, index) => (
+          <RevealOnScroll key={event.id} className="relative">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 md:mb-12 gap-4">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-brand-900 font-bold tracking-widest uppercase text-xs md:text-sm">Архив событий</span>
+                  <div className="h-px w-8 bg-brand-900/30"></div>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-2">{event.title}</h2>
+                <div className="flex items-center gap-2 text-slate-500 font-medium text-lg md:text-xl">
+                  <span className="text-brand-900">{event.location}</span>
+                </div>
+              </div>
+              <p className="text-slate-600 max-w-md text-sm md:text-base leading-relaxed md:text-right">
+                {event.description}
+              </p>
+            </div>
+
+            {/* Horizontal Swipeable Gallery */}
+            <div className="relative group">
+               {/* Swipe hint */}
+               <div className="md:hidden absolute -top-8 right-0 flex items-center gap-1 text-slate-400 animate-pulse">
+                  <span className="text-[10px] uppercase font-bold tracking-widest">Свайп</span>
+                  <ChevronsRight className="w-4 h-4" />
+               </div>
+
+               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-8 -mx-4 px-4 md:mx-0 md:px-0 hide-scroll">
+                  {event.images.map((img, imgIdx) => (
+                    <div 
+                      key={imgIdx} 
+                      className="shrink-0 w-[85vw] md:w-[450px] h-[250px] md:h-[320px] relative rounded-[2rem] overflow-hidden snap-center shadow-lg bg-slate-100 border border-slate-200"
+                    >
+                       <img 
+                         src={img} 
+                         alt={`${event.title} фото ${imgIdx + 1}`}
+                         loading="lazy"
+                         className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                       />
+                       {/* Gradient overlay for better depth */}
+                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                    </div>
+                  ))}
+                  
+                  {/* Spacer for right padding in scroll */}
+                  <div className="shrink-0 w-1 md:w-0" />
+               </div>
+            </div>
+
+          </RevealOnScroll>
+        ))}
+      </div>
+
+      {/* Contact Section */}
+      <div className="relative z-10 pb-24 px-4">
+        <ContactSection 
+           rateLimitKey="whatsapp-mc-contact"
+           className="max-w-4xl mx-auto"
+           title="Остались вопросы?"
+           subtitle="Наши менеджеры помогут разобраться"
+           buttonText="НАПИСАТЬ В WHATSAPP"
+           telegramText="НАПИСАТЬ В TELEGRAM"
+           telegramHref="https://tlgg.ru/@club_manageer"
+        />
+      </div>
     </section>
   );
 }

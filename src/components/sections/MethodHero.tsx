@@ -2,10 +2,17 @@ import { AuroraBackground } from "../ui/aurora-background";
 import { ShinyButton } from "../ui/shiny-button";
 import RevealOnScroll from "../RevealOnScroll";
 
-export function ClubHero() {
+export function MethodHero() {
+  const scrollToTariffs = () => {
+    const element = document.getElementById('tariffs');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <RevealOnScroll className="lg:col-span-12 mb-24 md:mb-32">
-      <div className="bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#172554] rounded-[2.5rem] p-8 md:p-14 relative overflow-hidden shadow-2xl text-white min-h-[90vh] flex flex-col justify-center border border-white/5">
+      <div className="bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#172554] rounded-[2.5rem] p-8 md:p-14 relative overflow-hidden shadow-2xl text-white min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center border border-white/5">
          {/* Background Glow Effects */}
          <AuroraBackground 
            variant="blue-glow" 
@@ -50,7 +57,7 @@ export function ClubHero() {
             </p>
 
             {/* Premium Button */}
-            <ShinyButton href="https://t.me/manager_club_bot" isExternal variant="primary">
+            <ShinyButton onClick={scrollToTariffs} variant="primary">
                Вступить в МЕТОД
             </ShinyButton>
          </div>

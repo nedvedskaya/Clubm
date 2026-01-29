@@ -3,49 +3,63 @@ import RevealOnScroll from './RevealOnScroll';
 import { BackButton } from './ui/back-button';
 import { AccordionItem } from './ui/accordion-item';
 import { ContactSection } from './ContactSection';
-import { StatusBadge } from './ui/status-badge';
-import { GlassCard } from './ui/glass-card';
-import { SectionTitle } from './ui/section-title';
 import { courseModules } from './data/courseModules';
 import { faqData } from './data/faqData';
-import { AuroraBackground } from './ui/aurora-background';
+import { courseBonuses, whatsInsideData, heroTags, fullAccessFeatures } from './data/course-content';
 import { ShinyButton } from './ui/shiny-button';
 import { CourseModuleCard } from './ui/course-module-card';
 import ResultsSlider from './ResultsSlider';
-import { Building2, User, FileText, MessageCircle, ShieldCheck } from 'lucide-react';
-import { FeatureCard } from './ui/feature-card';
+import { Check, ChevronsRight } from 'lucide-react';
 import { sanitizeHTML } from '../utils/security';
-import { AudienceBenefitCard } from './ui/audience-benefit-card';
+import { CourseTag } from './ui/course-tag';
+import { SectionLabel } from './ui/section-label';
+import { GradientHeading } from './ui/gradient-heading';
+import { useNavigation } from './NavigationContext';
+import { useScrollTo } from '../hooks/useScrollTo';
+import { StructuredData } from './StructuredData';
+import { SEO } from './SEO';
 
-const CourseTag = ({ children }: { children: React.ReactNode }) => (
-  <div className="px-2.5 py-2 xs:px-4 md:px-6 md:py-3 rounded-full bg-white border border-slate-200 text-slate-500 font-bold xs:text-[10px] md:text-[13px] tracking-wide shadow-sm hover:border-slate-300 transition-colors cursor-default whitespace-nowrap">
-    {children}
-  </div>
-);
+export default function CoursePage() {
+  const { navigate } = useNavigation();
+  const { scrollToElement } = useScrollTo();
 
-interface CoursePageProps {
-  onNavigate: (page: string) => void;
-}
-
-export default function CoursePage({ onNavigate }: CoursePageProps) {
-  const scrollToModules = () => {
-    const modulesGrid = document.getElementById('modules-grid');
-    if (modulesGrid) {
-      modulesGrid.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleScrollToFullAccess = () => {
+    scrollToElement('full-access');
   };
 
-  const scrollToFullAccess = () => {
-    const fullAccess = document.getElementById('full-access');
-    if (fullAccess) {
-      fullAccess.scrollIntoView({ behavior: 'smooth' });
-    }
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Профессиональный менеджер",
+    "description": "Практический онлайн-курс по продажам для менеджеров в детейлинге. Скрипты, работа с возражениями, повышение чека.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Клуб менеджеров детейлинга",
+      "sameAs": "https://club-managers.ru"
+    },
+    "offers": {
+      "@type": "Offer",
+      "category": "Paid",
+      "priceCurrency": "RUB",
+      "price": "39900"
+    },
+    "educationalLevel": "Beginner to Advanced",
+    "teaches": "Продажи в детейлинге, Работа с возражениями, Увеличение среднего чека"
   };
 
   return (
     <section className="bg-transparent min-h-screen pb-20">
+      <SEO 
+        title="Курс Профессиональный менеджер | Обучение продажам"
+        description="Практический онлайн-курс для менеджеров детейлинг студий. Скрипты продаж, работа с возражениями, повышение среднего чека. Старт сразу после оплаты."
+        keywords="курсы для менеджеров, обучение детейлинг, скрипты продаж, работа с клиентами, повышение чека"
+        type="product"
+        image="https://da-school.online/public/course_og.jpg"
+      />
+      <StructuredData data={courseSchema} />
+
       <div className="pt-6 px-4 mb-8">
-        <BackButton onClick={() => onNavigate('page-home')} className="mb-0" />
+        <BackButton onClick={() => navigate('page-home')} className="mb-0" />
       </div>
 
       {/* New Clean Hero Card - White Style - Exact Match */}
@@ -56,46 +70,40 @@ export default function CoursePage({ onNavigate }: CoursePageProps) {
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
            {/* Badge */}
-           <div className="relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white border border-slate-100 shadow-sm mb-8 z-10">
-              <span className="h-2 w-2 rounded-full bg-[#EF4444]"></span>
-              <span className="text-[11px] md:text-xs font-bold tracking-[0.15em] uppercase text-slate-500">Онлайн-курс</span>
+           <div className="relative inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-slate-100 shadow-sm mb-8 z-10">
+              <span className="relative flex h-2.5 w-2.5">
+                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF0000] shadow-[0_0_12px_rgba(255,0,0,0.8)]"></span>
+              </span>
+              <span className="text-[11px] md:text-xs tracking-[0.15em] uppercase text-[rgb(0,0,0)] font-bold">Онлайн-курс</span>
            </div>
 
            {/* Title */}
-           <h1 className="relative flex flex-col items-center w-full mb-8 px-1 z-10">
-             <span className="text-[2rem] xs:text-[2.5rem] sm:text-5xl md:text-[3.5rem] font-black uppercase leading-[1.1] tracking-tight text-[#1e293b]">
+           <h1 className="relative flex flex-col items-center w-full mb-8 px-1 z-10 text-center">
+             <span className="text-[1.6rem] sm:text-5xl md:text-[3.5rem] font-black uppercase leading-[1.1] tracking-tight text-[#1e293b] w-full break-words">
                Профессиональный
              </span>
-             <span className="text-[2.5rem] xs:text-[3rem] sm:text-6xl md:text-[4.5rem] font-black uppercase leading-[1] tracking-tight text-[#7F1D1D] mt-1 drop-shadow-sm">
+             <span className="text-[2rem] sm:text-6xl md:text-[4.5rem] font-black uppercase leading-[1] tracking-tight text-[#7F1D1D] mt-1 drop-shadow-sm">
                Менеджер
              </span>
            </h1>
 
            {/* Description */}
-           <p className="relative text-slate-500 text-sm md:text-lg max-w-lg mx-auto leading-relaxed mb-12 font-medium px-4 z-10">
-             Система подготовки детейлинг-менеджера под ключ. <span className="text-slate-900 font-semibold">Внедрите стандарты продаж, которые приносят прибыль.</span>
+           <p className="relative text-slate-500 md:text-lg max-w-lg mx-auto leading-relaxed mb-12 font-medium px-4 z-10 text-[16px]">
+             Система подготовки детейлинг-менеджера под ключ. <span className="text-slate-900 font-semibold text-[15px]">Внедрите стандарты продаж, которые приносят прибыль.</span>
            </p>
 
-           {/* Feature Tags - Light Pills Layout (3 then 2) */}
-           <div className="relative flex flex-col items-center gap-2 xs:gap-3 mb-12 w-full max-w-[600px] mx-auto px-1 z-10">
-              {/* Row 1: 3 items - Force single line on mobile */}
-              <div className="flex flex-nowrap justify-center gap-1.5 xs:gap-2 md:gap-3 w-full overflow-x-visible">
-                 {['Видео-уроки', 'Скрипты продаж', 'Техкарты'].map((tag) => (
-                    <CourseTag key={tag}>{tag}</CourseTag>
-                 ))}
-              </div>
-              {/* Row 2: 2 items */}
-              <div className="flex flex-wrap justify-center gap-1.5 xs:gap-2 md:gap-3 w-full">
-                 {['Практика', 'Сертификат'].map((tag) => (
-                    <CourseTag key={tag}>{tag}</CourseTag>
-                 ))}
-              </div>
+           {/* Feature Tags - Adaptive Layout */}
+           <div className="relative flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 w-full max-w-[600px] mx-auto px-1 z-10">
+               {heroTags.map((tag) => (
+                  <CourseTag key={tag}>{tag}</CourseTag>
+               ))}
            </div>
 
            {/* Main CTA Button */}
            <div className="relative w-full max-w-md mx-auto mb-8 px-2 z-10">
               <ShinyButton 
-                  onClick={scrollToFullAccess}
+                  onClick={handleScrollToFullAccess}
                   variant="primary"
                   withArrow={false}
                   className="w-full !py-5 md:!py-6 !rounded-2xl !bg-[#450a0a] !to-[#300505] shadow-xl shadow-[#450a0a]/20 text-sm md:text-base tracking-[0.15em] uppercase font-bold text-white hover:shadow-2xl hover:shadow-[#450a0a]/30 hover:-translate-y-1 transition-all"
@@ -112,180 +120,249 @@ export default function CoursePage({ onNavigate }: CoursePageProps) {
         </div>
       </RevealOnScroll>
 
-      {/* ROI Section */}
-      <RevealOnScroll className="max-w-3xl mx-auto mb-32 px-6">
-        <div className="text-center p-4">
+      {/* Bonus Section - Compact & Styled */}
+      <RevealOnScroll className="max-w-[900px] mx-auto mb-20 px-4">
+        <div className="text-center mb-8 relative">
+           {/* Ambient Glow */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#5F0A0A]/5 blur-[60px] rounded-full pointer-events-none" />
            
-           <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 tracking-tighter">
-             Окупаемость: <span className="text-[#5F0A0A]">1 звонок</span>
-           </h3>
+           <GradientHeading className="text-5xl md:text-7xl">Бонусы</GradientHeading>
            
-           <p className="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto font-medium antialiased">
-             Стоимость курса равна <span className="text-slate-900 font-bold">одной допродаже</span> «полировка + керамика». Инвестиция окупается мгновенно.
+           <p className="text-slate-500 text-lg font-medium max-w-lg mx-auto leading-relaxed tracking-tight">
+             Выигрывают все: и владелец, и менеджер.
            </p>
         </div>
-      </RevealOnScroll>
-
-      {/* Double Benefit Section */}
-      <RevealOnScroll className="max-w-[1100px] mx-auto mb-32 px-4">
-        <div className="text-center mb-16 md:mb-24">
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tighter">Преимущества</h2>
-        </div>
         
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-          {/* Owner Card */}
-          <AudienceBenefitCard 
-            icon={Building2}
-            title="Владельцу"
-            benefits={[
-              { title: "Свобода", text: "Вы больше не привязаны к телефону 24/7." },
-              { title: "Прогноз", text: "Конверсия и выручка становятся предсказуемыми." },
-              { title: "Система", text: "Стандарт обучения, который остается в компании навсегда." }
-            ]}
-          />
-
-          {/* Manager Card */}
-          <AudienceBenefitCard 
-            icon={User}
-            title="Менеджеру"
-            benefits={[
-              { title: "Доход", text: "Процент с продаж растет вместе с высоким чеком." },
-              { title: "Статус", text: "Переход от «приемщика» к эксперту по продажам." },
-              { title: "Арсенал", text: "Скрипты и техники, которые работают безотказно." }
-            ]}
-          />
+        <div className="grid md:grid-cols-2 gap-6">
+          {courseBonuses.map((card, index) => (
+            <div key={index} className="relative bg-gradient-to-b from-[#8E2828] to-[#360808] rounded-[2.5rem] p-8 shadow-xl shadow-[#450a0a]/20 flex flex-col h-full border border-white/10 overflow-hidden group hover:scale-[1.02] transition-transform duration-500">
+               {/* Subtle Top Shine */}
+               <div className="absolute inset-x-0 top-0 h-[200px] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+               
+               <h3 className="relative z-10 text-2xl font-bold text-white mb-8 text-center drop-shadow-md">{card.title}</h3>
+               
+               <div className="relative z-10 space-y-6 flex-1">
+                  {card.items.map((item, idx) => (
+                    <div key={idx} className="flex gap-4 items-start">
+                       <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-0.5 border border-white/10 shadow-inner">
+                          <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                       </div>
+                       <div>
+                          <h4 className="text-base font-bold text-white mb-0.5 drop-shadow-sm">{item.title}</h4>
+                          <p className="text-white/80 font-medium leading-snug text-sm">{item.text}</p>
+                       </div>
+                    </div>
+                  ))}
+               </div>
+            </div>
+          ))}
         </div>
       </RevealOnScroll>
 
-      {/* What's Inside Section */}
-      <RevealOnScroll className="max-w-[1000px] mx-auto mb-32 px-6">
-         <div className="text-center mb-16">
-            <span className="inline-block text-[#5F0A0A] text-[11px] font-bold uppercase tracking-[0.2em] mb-4">
-              Архитектура
-            </span>
-            <h2 className="text-4xl md:text-5xl font-semibold text-slate-900 mb-6 tracking-tight">Что внутри</h2>
-            <p className="text-slate-500 text-xl max-w-2xl mx-auto font-light leading-relaxed">
-              Не просто теория. Мы создали набор инструментов для ежедневной работы.
-            </p>
+      {/* What's Inside Section - Compact & Animated */}
+      <RevealOnScroll className="max-w-[1000px] mx-auto mb-32 px-4">
+         <div className="text-center mb-12 relative">
+             <SectionLabel>Наполнение</SectionLabel>
+             <GradientHeading className="text-6xl md:text-8xl text-[48px]">Что внутри</GradientHeading>
+             <p className="text-slate-500 text-lg max-w-xl mx-auto font-medium leading-relaxed">
+               Инструменты для ежедневной работы, а не просто теория.
+             </p>
          </div>
 
-         <div className="grid gap-6">
-            <FeatureCard 
-              icon={FileText}
-              title="Техкарты услуг"
-              description="Полная база знаний по 21 услуге детейлинга. Ваш менеджер будет знать продукт лучше, чем клиент."
-            />
-            <FeatureCard 
-              icon={MessageCircle}
-              title="Скрипты продаж"
-              description="Готовые речевые модули. Мы убрали «воду» и оставили только то, что закрывает сделки и отрабатывает «дорого»."
-            />
-            <FeatureCard 
-              icon={ShieldCheck}
-              title="Система аттестации"
-              description="Контроль качества знаний. Вы получаете сотрудника, который доказал свою компетентность на экзамене."
-            />
+         <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+            {whatsInsideData.map((card, idx) => (
+              <div key={idx} className="relative bg-white rounded-[2rem] p-6 md:p-8 flex flex-col h-full shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] border border-slate-100 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(95,10,10,0.1)] hover:-translate-y-1 group overflow-hidden">
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[4rem] -mr-10 -mt-10 transition-colors duration-500 group-hover:bg-[#5F0A0A]/5" />
+                 
+                 <div className="relative w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#5F0A0A] mb-6 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-500">
+                    {card.icon}
+                 </div>
+                 
+                 <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#5F0A0A] transition-colors duration-300">{card.title}</h3>
+                 <p className="text-slate-500 text-[15px] leading-relaxed font-medium">
+                   {card.text}
+                 </p>
+              </div>
+            ))}
          </div>
       </RevealOnScroll>
 
       {/* Modules Grid */}
-      <div id="modules-grid" className="relative max-w-[1200px] mx-auto px-4 mb-16">
-        <div className="text-center mb-16">
-           <SectionTitle className="!text-3xl md:!text-5xl !font-semibold !tracking-tight">Программа</SectionTitle>
-        </div>
+      <div id="modules-grid" className="relative max-w-[1200px] mx-auto px-4 mb-0 md:mb-0">
+        <div className="text-center mb-12 relative">
+             <SectionLabel>Обучение</SectionLabel>
+             <GradientHeading className="text-6xl md:text-8xl text-[48px]">Программа</GradientHeading>
+             <p className="text-slate-500 text-lg max-w-xl mx-auto font-medium leading-relaxed">
+               Пошаговый план развития от новичка до профессионала.
+             </p>
+         </div>
         
         <div className="md:hidden text-center mb-6">
             <span className="text-xs text-slate-400 uppercase tracking-widest font-medium">Свайп для просмотра</span>
         </div>
         
-        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scroll gap-6 pb-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
+        <div className="flex overflow-x-auto snap-x snap-proximity hide-scroll gap-4 pb-4 md:gap-6 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible px-4 md:px-0 -mx-4 md:mx-0">
+          <div className="shrink-0 w-4 md:hidden" /> {/* Left spacer */}
           {courseModules.map((module) => (
              <CourseModuleCard key={module.num} module={module} />
           ))}
+          <div className="shrink-0 w-4 md:hidden" /> {/* Right spacer */}
         </div>
       </div>
 
-      {/* Full Access */}
-      <RevealOnScroll
-        id="full-access"
-        className="max-w-[1200px] mx-auto relative overflow-hidden rounded-[3rem] bg-[#0A0A0A] text-white p-10 md:p-20 shadow-2xl mb-32"
-      >
-        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-[#5F0A0A]/30 to-transparent pointer-events-none" />
-        <AuroraBackground variant="brand-glow" className="absolute -top-40 -right-40 w-[800px] h-[800px] opacity-10" />
-        
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div>
-            <StatusBadge variant="dark" size="sm" className="mb-8 border-white/10 bg-white/5 backdrop-blur-md">
-               <span className="w-1.5 h-1.5 rounded-full bg-white mr-2"></span>
-               Премиум доступ
-            </StatusBadge>
-            
-            <h2 className="text-5xl md:text-7xl font-semibold mb-6 leading-[0.9] tracking-tighter">
-              Всё <br />
-              включено.
-            </h2>
-            <p className="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-md font-light">
-              Получите полный доступ ко всем модулям и материалам с выгодой <span className="text-white font-medium">23%</span>.
+      {/* ROI Section - Minimalist & Compact */}
+      <RevealOnScroll className="max-w-[700px] mx-auto mb-16 px-4 pt-0 md:-mt-8">
+         <div className="relative z-10 flex flex-col items-center text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-slate-100 mb-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
+               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-400">Окупаемость</span>
+            </div>
+
+            {/* Main Metric */}
+            <h3 className="text-[4.5rem] md:text-[6.5rem] font-black leading-[0.85] tracking-tighter mb-4 bg-gradient-to-b from-[#450a0a] to-[#7F1D1D] bg-clip-text text-transparent drop-shadow-sm select-none transition-transform duration-700 hover:scale-105">
+              1 звонок
+            </h3>
+
+            {/* Description */}
+            <p className="text-slate-500 text-lg md:text-xl font-medium leading-snug max-w-md mx-auto tracking-tight mb-5">
+              Стоимость курса равна <span className="text-slate-900 font-bold">всего одной допродаже</span> <br/> «Полировка + керамика».
             </p>
             
-            <div className="flex items-center gap-4 text-sm text-gray-500 font-mono uppercase tracking-widest">
-               <span>Предложение ограничено</span>
-               <span className="w-12 h-px bg-white/10"></span>
-               <span>2026</span>
-            </div>
-          </div>
+            {/* Bottom Tagline */}
+            <p className="text-[#8E1C1C] text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase opacity-80">
+               Инвестиция окупается мгновенно
+            </p>
+         </div>
+      </RevealOnScroll>
 
-          <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-10 text-center relative overflow-hidden group hover:bg-white/10 transition-colors duration-500">
-            <p className="text-gray-400 text-[11px] uppercase tracking-[0.3em] mb-6 font-bold">Стоимость</p>
-            <div className="flex flex-col items-center gap-2 mb-10">
-              <span className="text-xl text-gray-600 line-through font-medium">51 860 ₽</span>
-              <span className="text-6xl md:text-7xl font-semibold text-white tracking-tighter">
-                39 900 <span className="text-2xl align-top text-gray-500 font-light">₽</span>
-              </span>
-            </div>
+      {/* Full Access - Premium Redesign - Dark Burgundy Theme */}
+      <RevealOnScroll
+        id="full-access"
+        className="max-w-md mx-auto relative mb-32 px-4"
+      >
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-b from-[#8E2828] to-[#360808] text-white shadow-2xl shadow-[#450a0a]/50 border border-white/10 group ring-1 ring-white/10 isolate">
+           
+           {/* Smoother Shimmer Effect */}
+           <div className="absolute inset-0 -translate-x-[100%] animate-[shimmer_5s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 z-0 pointer-events-none ease-in-out" />
 
-            <ShinyButton 
-                href="https://da-school.online/oplata_prodaji_v_deteilinge"
-                isExternal
-                variant="glass"
-                width="full"
-                withArrow={false}
-                className="!py-5 !text-[13px] !tracking-widest !font-bold !uppercase !rounded-xl"
-            >
-                Приобрести доступ
-            </ShinyButton>
-          </div>
+           {/* Ambient Lighting / Glows */}
+           <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-white/5 blur-[100px] rounded-full pointer-events-none mix-blend-overlay" />
+           <div className="absolute top-1/2 right-[-100px] w-[300px] h-[300px] bg-[#FF4D4D]/10 blur-[90px] rounded-full pointer-events-none mix-blend-screen" />
+           
+           {/* Content Container */}
+           <div className="relative z-10 flex flex-col pt-12 px-8 pb-8">
+              
+              {/* Header */}
+              <div className="mb-8">
+                 <span className="block text-[13px] font-bold tracking-[0.2em] uppercase text-white/70 mb-2 ml-1">Тариф</span>
+                 <h2 className="text-[40px] leading-[0.9] font-black tracking-tighter text-white drop-shadow-xl">
+                    Профессионал
+                 </h2>
+              </div>
+              
+              {/* Description */}
+              <div className="relative pl-6 py-1 mb-10 border-l-2 border-white/30">
+                 <p className="text-white/95 text-[1.1rem] font-medium leading-snug tracking-tight drop-shadow-md italic">
+                    Внедрите стандарты продаж, которые приносят прибыль без вашего участия.
+                 </p>
+              </div>
+
+              {/* Features List */}
+              <div className="space-y-5 mb-12">
+                 {fullAccessFeatures.map((item, i) => (
+                   <div key={i} className="flex items-center gap-4 group/item">
+                     {/* Glassy Checkmark */}
+                     <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 backdrop-blur-md border border-white/20 shadow-inner group-hover/item:scale-110 transition-transform duration-300">
+                       <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                     </div>
+                     <span className="text-white font-bold text-[1.05rem] tracking-tight drop-shadow-sm font-normal">{item}</span>
+                   </div>
+                 ))}
+              </div>
+
+              {/* Price Card - White Bottom Block */}
+              <div className="relative bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-xl overflow-hidden">
+                  
+                  {/* Subtle Inner Highlight */}
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+                  
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                     <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-slate-400 mb-6">Стоимость</span>
+                     
+                     <div className="relative mb-2">
+                        <span className="text-xl text-slate-400 line-through font-medium decoration-slate-300 decoration-1">
+                           51 860 ₽
+                        </span>
+                     </div>
+                     
+                     <div className="flex items-baseline gap-1 mb-8">
+                        <span className="text-[48px] leading-none font-black tracking-tighter text-[#3a0b0b] drop-shadow-sm">
+                           39 900
+                        </span>
+                        <span className="text-3xl font-light text-[#3a0b0b]/60">₽</span>
+                     </div>
+
+                     {/* Button */}
+                     <ShinyButton
+                        href="https://da-school.online/oplata_prodaji_v_deteilinge"
+                        isExternal
+                        variant="primary"
+                        withArrow={false}
+                        className="w-full !py-5 !rounded-2xl !bg-[#8E2828] !to-[#360808] text-[0.95rem] tracking-[0.1em] shadow-lg shadow-[#450a0a]/30"
+                     >
+                        Приобрести доступ
+                     </ShinyButton>
+                  </div>
+              </div>
+
+           </div>
         </div>
       </RevealOnScroll>
 
       {/* Results Slider */}
-      <RevealOnScroll className="mb-32">
+      <RevealOnScroll className="mb-12">
+        <div className="text-center mb-12 relative">
+             <SectionLabel>Кейсы</SectionLabel>
+             <GradientHeading className="text-6xl md:text-8xl text-[48px]">Результаты участников</GradientHeading>
+             
+             <div className="flex items-center justify-center gap-2 text-[#3b82f6] animate-pulse">
+                <ChevronsRight className="w-5 h-5" />
+                <span className="text-sm font-bold uppercase tracking-widest">Свайпните влево</span>
+             </div>
+        </div>
         <ResultsSlider />
       </RevealOnScroll>
 
       {/* FAQ Section */}
-      <RevealOnScroll className="max-w-4xl mx-auto mb-24 px-4">
-        <GlassCard className="!bg-white !shadow-xl !border-slate-200 !backdrop-blur-none border">
-          <div className="relative z-10 p-4">
-            <div className="text-center mb-12">
-               <h2 className="text-3xl font-semibold text-slate-900 tracking-tight">Частые вопросы</h2>
-            </div>
-
-            <div className="space-y-4">
-              {faqData.map((item, idx) => (
-                <AccordionItem key={idx} question={item.question}>
-                  <p dangerouslySetInnerHTML={{ __html: sanitizeHTML(item.answer) }} />
-                </AccordionItem>
-              ))}
-            </div>
+      <RevealOnScroll className="max-w-4xl mx-auto mb-8 px-4">
+        {/* Removed GlassCard wrapper to place content directly on page background */}
+        <div className="relative z-10 p-4">
+          <div className="text-center mb-12 relative">
+             <SectionLabel>FAQ</SectionLabel>
+             <GradientHeading className="text-6xl md:text-8xl">Вопросы</GradientHeading>
+             <p className="text-slate-500 text-lg max-w-xl mx-auto font-medium leading-relaxed">
+               Ответы на самые популярные вопросы о курсе.
+             </p>
           </div>
-        </GlassCard>
+
+          <div className="space-y-4">
+            {faqData.map((item, idx) => (
+              <AccordionItem key={idx} question={item.question}>
+                <p dangerouslySetInnerHTML={{ __html: sanitizeHTML(item.answer) }} />
+              </AccordionItem>
+            ))}
+          </div>
+        </div>
       </RevealOnScroll>
 
       {/* Contact Section */}
       <ContactSection 
         rateLimitKey="whatsapp-course-contact"
         className="mb-16 max-w-4xl mx-auto"
+        subtitle="Мы поможем разобраться"
+        telegramHref="https://tlgg.ru/@club_manageer"
+        telegramText="НАПИСАТЬ В TELEGRAM"
+        buttonText="НАПИСАТЬ В WHATSAPP"
       />
     </section>
   );

@@ -80,7 +80,7 @@ export function CalendarModal({ isOpen, onClose }: CalendarModalProps) {
         {/* Footer */}
         <div className="p-6 border-t border-slate-100 bg-slate-50/50 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
            <p className="text-xs text-slate-400 font-medium">
-              * Расписание может корректироваться. Актуальная информация всегда в боте.
+              * Расписание может корректироваться. Актуальная информация всегда в телеграм.
            </p>
            <button 
              onClick={onClose}

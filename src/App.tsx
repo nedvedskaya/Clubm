@@ -1,52 +1,40 @@
-import { useState, useEffect } from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navigation from './components/Navigation';
-import HomePage from './components/HomePage';
-import ClubPage from './components/ClubPage';
-import CoursePage from './components/CoursePage';
-import MasterclassPage from './components/MasterclassPage';
 import Footer from './components/Footer';
 import SecurityHeaders from './components/SecurityHeaders';
 import { Toaster } from 'sonner@2.0.3';
 import { AuroraBackground } from './components/ui/aurora-background';
+import { NavigationProvider, useNavigation } from './components/NavigationContext';
+import { Skeleton } from './components/ui/skeleton';
+import { YandexMetrica } from './components/YandexMetrica';
 
-export default function App() {
-  const [activePage, setActivePage] = useState('page-home');
+// Lazy load pages for performance
+const HomePage = lazy(() => import('./components/HomePage'));
+const ClubPage = lazy(() => import('./components/ClubPage'));
+const CoursePage = lazy(() => import('./components/CoursePage'));
+const MasterclassPage = lazy(() => import('./components/MasterclassPage'));
 
-  // Handle URL hash on load
-  useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    if (hash && ['page-home', 'page-club', 'page-course', 'page-masterclass'].includes(hash)) {
-      setActivePage(hash);
-    }
-  }, []);
+function PageLoader() {
+  return (
+    <div className="w-full h-screen flex flex-col items-center justify-center space-y-4">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-900"></div>
+      <div className="text-slate-400 text-sm font-medium tracking-widest uppercase">Загрузка...</div>
+    </div>
+  );
+}
 
-  // Handle browser back/forward
-  useEffect(() => {
-    const handlePopState = () => {
-      const hash = window.location.hash.substring(1);
-      if (hash && ['page-home', 'page-club', 'page-course', 'page-masterclass'].includes(hash)) {
-        setActivePage(hash);
-      } else {
-        setActivePage('page-home');
-      }
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
-
-  const showPage = (pageId: string) => {
-    setActivePage(pageId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    history.pushState(null, '', '#' + pageId);
-  };
+function AppLayout() {
+  const { activePage } = useNavigation();
 
   return (
     <>
       {/* Security Headers */}
       <SecurityHeaders />
       
-      {/* Toast Notifications для Rate Limiting */}
+      {/* Analytics */}
+      <YandexMetrica />
+
+      {/* Toast Notifications */}
       <Toaster position="top-right" richColors closeButton />
       
       <div className="antialiased selection:bg-brand-800 selection:text-white font-sans bg-[#F8F9FC] min-h-screen relative overflow-x-hidden">
@@ -61,8 +49,6 @@ export default function App() {
                variant="slate"
                className="absolute bottom-[-10%] right-[-10%] w-[500px] md:w-[700px] h-[500px] md:h-[700px] opacity-40 animate-blob mix-blend-multiply"
                blur="blur-[100px]"
-               // Adding delay via style prop is tricky with the component wrapper unless we pass style, but for now standard animation is fine.
-               // If we need different delays, we can add style={{ animationDelay: '2s' }} to the wrapper div or extend component.
              />
              <div style={{ animationDelay: '2s' }} className="absolute bottom-[-10%] right-[-10%] w-full h-full opacity-0"></div> 
 
@@ -74,19 +60,29 @@ export default function App() {
         </div>
 
         {/* Navigation */}
-        <Navigation activePage={activePage} onNavigate={showPage} />
+        <Navigation />
 
         {/* Main Container */}
         <div className="min-h-screen pt-28 md:pt-32 lg:pt-36 pb-14 md:pb-16 lg:pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
-          {activePage === 'page-home' && <HomePage onNavigate={showPage} />}
-          {activePage === 'page-club' && <ClubPage onNavigate={showPage} />}
-          {activePage === 'page-course' && <CoursePage onNavigate={showPage} />}
-          {activePage === 'page-masterclass' && <MasterclassPage onNavigate={showPage} />}
+          <Suspense fallback={<PageLoader />}>
+            {activePage === 'page-home' && <HomePage />}
+            {activePage === 'page-club' && <ClubPage />}
+            {activePage === 'page-course' && <CoursePage />}
+            {activePage === 'page-masterclass' && <MasterclassPage />}
+          </Suspense>
         </div>
 
         {/* Footer */}
         <Footer />
       </div>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationProvider>
+      <AppLayout />
+    </NavigationProvider>
   );
 }

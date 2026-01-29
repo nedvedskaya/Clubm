@@ -5,23 +5,28 @@ import { ShinyButton } from './ui/shiny-button';
 import { CalendarModal } from './CalendarModal';
 import { ClubResultsSection } from './sections/ClubResultsSection';
 import { MembershipSection } from './sections/MembershipSection';
-import { ClubHero } from './sections/ClubHero';
+import { MethodHero } from './sections/MethodHero';
 import { ClubPainPoints } from './sections/ClubPainPoints';
 import { ClubRoadmap } from './sections/ClubRoadmap';
 import { ClubParticipation } from './sections/ClubParticipation';
 import { ContactSection } from './ContactSection';
+import { useNavigation } from './NavigationContext';
+import { SEO } from './SEO';
 
-interface ClubPageProps {
-  onNavigate: (page: string) => void;
-}
-
-export default function ClubPage({ onNavigate }: ClubPageProps) {
+export default function ClubPage() {
+  const { navigate } = useNavigation();
   // Calendar Modal State
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   
   return (
     <section>
-      <BackButton onClick={() => onNavigate('page-home')} />
+      <SEO 
+        title="Метод: система управления прибылью | Клуб менеджеров"
+        description="Вступите в закрытый клуб предпринимателей в автобизнесе. Доступ к базе знаний, календарь событий, нетворкинг и готовые инструменты для роста прибыли."
+        keywords="автобизнес, клуб предпринимателей, детейлинг бизнес, рост прибыли, нетворкинг"
+      />
+
+      <BackButton onClick={() => navigate('page-home')} />
       
       {/* Calendar Modal */}
       <CalendarModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} />
@@ -29,7 +34,7 @@ export default function ClubPage({ onNavigate }: ClubPageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
         
         {/* HERO: Method */}
-        <ClubHero />
+        <MethodHero />
 
         {/* Узнаете себя? (Pain Points) */}
         <ClubPainPoints />
@@ -53,22 +58,12 @@ export default function ClubPage({ onNavigate }: ClubPageProps) {
               <ContactSection 
                 title="Остались вопросы?"
                 subtitle="Если вы не уверены, какой формат подойдет именно вам — напишите нам. Мы разберем вашу ситуацию и подскажем честно."
-                buttonText="Задать вопрос в WhatsApp"
+                buttonText="ЗАДАТЬ ВОПРОС В WHATSAPP"
                 href="https://wa.me/79951140299"
                 rateLimitKey="whatsapp-club-contact"
+                telegramHref="https://tlgg.ru/@club_manageer"
+                telegramText="ЗАДАТЬ ВОПРОС В TELEGRAM"
               />
-              
-              <div className="flex flex-col items-center gap-4 max-w-md mx-auto mt-8">
-                 <p className="text-slate-400 text-sm font-medium">Или используйте Telegram бот</p>
-                 <ShinyButton 
-                  href="https://t.me/manager_club_bot" 
-                  isExternal 
-                  variant="primary" 
-                  className="w-full py-4 text-sm font-bold tracking-widest uppercase shadow-xl shadow-brand-900/20 !text-white rounded-2xl"
-                >
-                  Вступить через Telegram
-                </ShinyButton>
-              </div>
            </div>
         </RevealOnScroll>
       </div>

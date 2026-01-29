@@ -3,6 +3,13 @@ import screenshot420k from 'figma:asset/97dc793e206f443751a6f77051c2dde251ca13da
 
 const cases = [
   {
+    name: 'Артур Константинович',
+    result: '189 000 ₽',
+    badge: 'Рост в 2.1 раза',
+    was: 'Tiguan L Pro заехал на пакет оклейки зоны риска за 90 тыс (со скидкой).',
+    became: 'Допродал: Оклейку порогов (20 тыс), глянцевых стоечек (6 тыс), панорамы (20 тыс), керамику на кузов (35 тыс) и керамику кожи (18 тыс).',
+  },
+  {
     name: 'Денис Лысенко',
     result: '382 000 ₽',
     badge: 'Рост в 15 раз',
@@ -91,17 +98,7 @@ const cases = [
 
 export default function ResultsSlider() {
   return (
-    <RevealOnScroll id="results-block" className="lg:col-span-12 glass-card p-8 md:p-10 mt-6 bg-white/60">
-      <div className="flex items-center justify-between mb-8">
-        <h3 className="text-2xl md:text-3xl font-bold text-slate-900">Результаты участников</h3>
-        <div className="hidden md:flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-50 border border-blue-200">
-          <svg className="w-5 h-5 text-blue-900 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-          </svg>
-          <span className="text-sm font-bold text-blue-900 uppercase tracking-wide">Листайте вправо</span>
-        </div>
-      </div>
-
+    <div id="results-block" className="lg:col-span-12 mt-6">
       {/* Slider Container */}
       <div className="relative group">
         {/* Desktop hint arrows */}
@@ -121,13 +118,7 @@ export default function ResultsSlider() {
         </div>
 
         {/* Mobile hint */}
-        <div className="md:hidden mb-4 flex items-center justify-center gap-2 text-blue-900">
-          <svg className="w-5 h-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-          </svg>
-          <span className="text-sm font-bold uppercase tracking-wide">Свайпните влево</span>
-        </div>
-
+        
         <div className="flex overflow-x-auto snap-x snap-mandatory hide-scroll gap-5 pb-8 px-2">
           {cases.map((caseItem, index) => (
             <div
@@ -138,6 +129,9 @@ export default function ResultsSlider() {
                 <img
                   src={caseItem.image || `https://placehold.co/600x800/e2e8f0/64748b?text=Скриншот+${index + 1}`}
                   alt={`Скриншот ${caseItem.name}`}
+                  loading="lazy"
+                  width="340"
+                  height="425"
                   className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
@@ -166,6 +160,6 @@ export default function ResultsSlider() {
           ))}
         </div>
       </div>
-    </RevealOnScroll>
+    </div>
   );
 }

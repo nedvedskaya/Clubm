@@ -13,7 +13,7 @@ interface CourseModuleCardProps {
 export function CourseModuleCard({ module }: CourseModuleCardProps) {
   return (
     <RevealOnScroll
-      className="w-[85vw] flex-none md:w-auto snap-center bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50 flex flex-col justify-between h-full relative overflow-hidden group hover:border-brand-200 transition-all"
+      className="w-[85vw] flex-none md:w-auto snap-center bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50 flex flex-col justify-between h-full relative overflow-hidden group hover:border-brand-200 transition-all disable-mobile-animation"
     >
       <div className="absolute -right-4 -top-4 text-[8rem] font-black text-slate-50 pointer-events-none select-none group-hover:text-brand-50/50 transition-colors">
         {module.num}
@@ -74,14 +74,15 @@ export function CourseModuleCard({ module }: CourseModuleCardProps) {
       
       <div className="mt-4 relative z-10">
           <ShinyButton 
-            href={module.link}
-            isExternal
-            variant="brand"
+            onClick={() => {
+              document.getElementById('full-access')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            variant="secondary"
             width="full"
             withArrow={false}
-            className="shadow-lg !text-white"
+            className="shadow-lg !bg-slate-100 !text-slate-900 hover:!bg-slate-200 border border-slate-200"
           >
-            Купить за {module.price}
+            Приобрести обучение
           </ShinyButton>
       </div>
     </RevealOnScroll>
