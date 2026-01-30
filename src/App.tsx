@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import SecurityHeaders from './components/SecurityHeaders';
-import { Toaster } from 'sonner@2.0.3';
+import { Toaster } from 'sonner';
 import { AuroraBackground } from './components/ui/aurora-background';
 import { NavigationProvider, useNavigation } from './components/NavigationContext';
 import { Skeleton } from './components/ui/skeleton';

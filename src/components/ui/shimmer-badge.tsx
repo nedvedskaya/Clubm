@@ -5,6 +5,7 @@ interface ShimmerBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   variant?: "brand" | "white" | "outline";
   icon?: React.ReactNode;
+  className?: string;
 }
 
 export function ShimmerBadge({ 

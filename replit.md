@@ -19,6 +19,7 @@ A React-based website for "Клуб менеджеров" (Managers Club) - a bu
 │   ├── components/       # React components
 │   │   ├── sections/     # Page sections
 │   │   ├── data/         # Content data files
+│   │   ├── ui/           # Reusable UI components
 │   │   └── figma/        # Figma-exported components
 │   ├── hooks/            # Custom React hooks
 │   ├── lib/              # Utility libraries
@@ -37,3 +38,17 @@ A React-based website for "Клуб менеджеров" (Managers Club) - a bu
 - Configured for static deployment
 - Build command: `npm run build`
 - Public directory: `build`
+
+## Recent Changes (January 2026)
+
+### Code Cleanup
+- Removed 26 unused UI components from `src/components/ui/` (~2,700 lines of dead code)
+- Fixed import paths for sonner and figma assets
+- Added missing React imports and TypeScript type improvements
+- Verified build passes with no errors
+
+### Remaining DRY Opportunities
+For future refactoring:
+1. **Horizontal slider pattern** - Used in 6 places, could be extracted to a shared `HorizontalSlider` component
+2. **Section headers** - Repeated pattern with SectionLabel + GradientHeading + subtitle could be a `SectionHeader` component
+3. **Scroll logic** - `useScrollTo` hook exists but some components still use inline `scrollIntoView` calls

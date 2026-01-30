@@ -7,15 +7,15 @@ interface BonusItem {
   text: string;
 }
 
-interface BonusCardProps {
+interface BonusCardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'premium';
   badgeText?: string;
   title: React.ReactNode;
-  description?: React.ReactNode; // Optional in premium
-  oldPrice?: string; // Optional in premium
-  newPrice?: string; // Optional in premium
-  newPriceSubtitle?: string; // Optional in premium
-  items?: BonusItem[]; // For premium variant
+  description?: React.ReactNode;
+  oldPrice?: string;
+  newPrice?: string;
+  newPriceSubtitle?: string;
+  items?: BonusItem[];
   className?: string;
   onClick?: () => void;
 }

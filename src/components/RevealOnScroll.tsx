@@ -1,6 +1,6 @@
-import { useEffect, useRef, ReactNode } from 'react';
+import React, { useEffect, useRef, ReactNode } from 'react';
 
-interface RevealOnScrollProps {
+interface RevealOnScrollProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
   id?: string;

@@ -16,6 +16,7 @@ import { sanitizeHTML } from '../utils/security';
 import { ShimmerBadge } from './ui/shimmer-badge';
 import { SectionLabel } from './ui/section-label';
 import { GradientHeading } from './ui/gradient-heading';
+import { CourseTag } from './ui/course-tag';
 import { useNavigation } from './NavigationContext';
 import { useScrollTo } from '../hooks/useScrollTo';
 import { StructuredData } from './StructuredData';

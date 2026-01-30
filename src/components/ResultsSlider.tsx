@@ -1,5 +1,6 @@
 import RevealOnScroll from './RevealOnScroll';
-import screenshot420k from 'figma:asset/97dc793e206f443751a6f77051c2dde251ca13da.png';
+
+const screenshot420k = '/assets/97dc793e206f443751a6f77051c2dde251ca13da.png';
 
 const cases = [
   {

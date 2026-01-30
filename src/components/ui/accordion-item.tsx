@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from './utils';
 
-interface AccordionItemProps {
+interface AccordionItemProps extends React.HTMLAttributes<HTMLDetailsElement> {
   question: string;
   children: React.ReactNode;
   className?: string;

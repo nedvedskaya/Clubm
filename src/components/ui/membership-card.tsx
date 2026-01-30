@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "motion/react";
 import { cn } from "../../lib/utils";
 import { AuroraBackground } from "./aurora-background";
@@ -22,6 +23,7 @@ interface MembershipCardProps {
   bottomNote?: React.ReactNode;
   delay?: number;
   onClick?: () => void;
+  className?: string;
 }
 
 export function MembershipCard({

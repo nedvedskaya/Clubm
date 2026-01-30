@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from './utils';
 
-interface CheckListItemProps {
+interface CheckListItemProps extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode;
   className?: string;
 }

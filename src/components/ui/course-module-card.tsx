@@ -6,7 +6,7 @@ import { ShinyButton } from "./shiny-button";
 import { CourseModule } from "../data/courseModules";
 import { sanitizeHTML } from "../../utils/security";
 
-interface CourseModuleCardProps {
+interface CourseModuleCardProps extends React.HTMLAttributes<HTMLDivElement> {
   module: CourseModule;
 }
 
