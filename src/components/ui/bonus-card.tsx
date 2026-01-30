@@ -1,28 +1,68 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
+interface BonusItem {
+  title: string;
+  text: string;
+}
+
 interface BonusCardProps {
+  variant?: 'default' | 'premium';
   badgeText?: string;
   title: React.ReactNode;
-  description: React.ReactNode;
-  oldPrice: string;
-  newPrice: string;
-  newPriceSubtitle: string;
+  description?: React.ReactNode; // Optional in premium
+  oldPrice?: string; // Optional in premium
+  newPrice?: string; // Optional in premium
+  newPriceSubtitle?: string; // Optional in premium
+  items?: BonusItem[]; // For premium variant
   className?: string;
   onClick?: () => void;
 }
 
 export function BonusCard({
+  variant = 'default',
   badgeText = "Бонус при оплате за год",
   title,
   description,
   oldPrice,
   newPrice,
   newPriceSubtitle,
+  items,
   className = "",
   onClick
 }: BonusCardProps) {
+  
+  if (variant === 'premium') {
+    return (
+        <div className={cn(
+            "relative bg-gradient-to-b from-[#8E2828] to-[#360808] rounded-[2.5rem] p-8 shadow-xl shadow-[#450a0a]/20 flex flex-col h-full border border-white/10 overflow-hidden group hover:scale-[1.02] transition-transform duration-500",
+            className
+        )}>
+            {/* Subtle Top Shine */}
+            <div className="absolute inset-x-0 top-0 h-[200px] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+            
+            <h3 className="relative z-10 text-2xl font-bold text-white mb-8 text-center drop-shadow-md">
+                {title}
+            </h3>
+            
+            <div className="relative z-10 space-y-6 flex-1">
+                {items?.map((item, idx) => (
+                <div key={idx} className="flex gap-4 items-start">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-0.5 border border-white/10 shadow-inner">
+                        <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <div>
+                        <h4 className="text-base font-bold text-white mb-0.5 drop-shadow-sm">{item.title}</h4>
+                        <p className="text-white/80 font-medium leading-snug text-sm">{item.text}</p>
+                    </div>
+                </div>
+                ))}
+            </div>
+        </div>
+    );
+  }
+
   return (
     <div 
       onClick={onClick}

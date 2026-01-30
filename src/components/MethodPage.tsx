@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 import { BackButton } from './ui/back-button';
-import { ShinyButton } from './ui/shiny-button';
 import { CalendarModal } from './CalendarModal';
 import { ClubResultsSection } from './sections/ClubResultsSection';
 import { MembershipSection } from './sections/MembershipSection';
@@ -12,8 +11,9 @@ import { ClubParticipation } from './sections/ClubParticipation';
 import { ContactSection } from './ContactSection';
 import { useNavigation } from './NavigationContext';
 import { SEO } from './SEO';
+import { CONTACTS } from './data/constants';
 
-export default function ClubPage() {
+export default function MethodPage() {
   const { navigate } = useNavigation();
   // Calendar Modal State
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
@@ -59,9 +59,9 @@ export default function ClubPage() {
                 title="Остались вопросы?"
                 subtitle="Если вы не уверены, какой формат подойдет именно вам — напишите нам. Мы разберем вашу ситуацию и подскажем честно."
                 buttonText="ЗАДАТЬ ВОПРОС В WHATSAPP"
-                href="https://wa.me/79951140299"
+                href={CONTACTS.whatsapp}
                 rateLimitKey="whatsapp-club-contact"
-                telegramHref="https://tlgg.ru/@club_manageer"
+                telegramHref={CONTACTS.telegram}
                 telegramText="ЗАДАТЬ ВОПРОС В TELEGRAM"
               />
            </div>

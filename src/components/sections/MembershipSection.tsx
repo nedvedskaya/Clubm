@@ -3,6 +3,7 @@ import { Monitor, MapPin, Check } from "lucide-react";
 import { SectionTitle } from "../ui/section-title";
 import { BonusCard } from "../ui/bonus-card";
 import { useNavigation } from "../NavigationContext";
+import { CONTACTS } from "../data/constants";
 
 export function MembershipSection() {
   const { navigate } = useNavigation();
@@ -18,7 +19,7 @@ export function MembershipSection() {
     if (url) {
       window.open(url, "_blank");
     } else {
-      window.open("https://tlgg.ru/@club_manageer", "_blank");
+      window.open(CONTACTS.telegram, "_blank");
     }
   };
 

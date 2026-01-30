@@ -34,12 +34,19 @@ export default function SecurityHeaders() {
     permissionsPolicy.content = 'geolocation=(), microphone=(), camera=()';
     document.head.appendChild(permissionsPolicy);
 
+    // Preconnect to Bunny Fonts (Performance)
+    const linkPreconnect = document.createElement('link');
+    linkPreconnect.rel = 'preconnect';
+    linkPreconnect.href = 'https://fonts.bunny.net';
+    document.head.appendChild(linkPreconnect);
+
     return () => {
       // Cleanup при размонтировании
       document.head.removeChild(contentTypeOptions);
       document.head.removeChild(frameOptions);
       document.head.removeChild(referrerPolicy);
       document.head.removeChild(permissionsPolicy);
+      document.head.removeChild(linkPreconnect);
     };
   }, []);
 

@@ -7,6 +7,8 @@ import { pastEvents } from './data/masterclass-content';
 import { ChevronsRight } from 'lucide-react';
 import { useNavigation } from './NavigationContext';
 import { SEO } from './SEO';
+import { ShinyButton } from './ui/shiny-button';
+import { CONTACTS } from './data/constants';
 
 export default function MasterclassPage() {
   const { navigate } = useNavigation();
@@ -29,9 +31,21 @@ export default function MasterclassPage() {
             <span className="text-slate-400">мастер-классов не запланировано</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-            Пока вы можете посмотреть, как проходили наши прошлые мероприятия.
+          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed mb-8">
+            Пока вы можете присоединиться в канал мастер-классов, чтобы не пропустить анонс или посмотреть, как проходили наши прошлые мероприятия.
           </p>
+          
+          <div className="flex justify-center">
+             <ShinyButton 
+                href={CONTACTS.telegramChannel} 
+                isExternal 
+                variant="brand"
+                withArrow={false}
+                className="!py-4 !px-8 !rounded-xl !bg-[#2AABEE] shadow-lg shadow-blue-400/30 !text-white font-bold tracking-wider uppercase text-sm hover:shadow-blue-400/50 hover:!bg-[#1A90CA] transition-all"
+             >
+                Канал в Telegram
+             </ShinyButton>
+          </div>
         </div>
       </RevealOnScroll>
 
@@ -99,7 +113,7 @@ export default function MasterclassPage() {
            subtitle="Наши менеджеры помогут разобраться"
            buttonText="НАПИСАТЬ В WHATSAPP"
            telegramText="НАПИСАТЬ В TELEGRAM"
-           telegramHref="https://tlgg.ru/@club_manageer"
+           telegramHref={CONTACTS.telegram}
         />
       </div>
     </section>

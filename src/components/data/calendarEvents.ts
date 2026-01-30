@@ -22,19 +22,19 @@ export const calendarData: CalendarMonth[] = [
         t: 'Мастермайнд', 
         desc: 'Стратегическая сессия: Планирование', 
         type: 'ONLINE', 
-        time: '12:00 MSK' 
+        time: '11:00 MSK' 
       },
       { 
-        d: '12', 
-        day: 'ЧТ', 
+        d: '10', 
+        day: 'ВТ', 
         t: 'Бизнес-Ужин', 
         desc: 'Нетворкинг и разбор кейсов', 
         type: 'OFFLINE', 
         time: '19:00 MSK' 
       },
       { 
-        d: '20', 
-        day: 'ПТ', 
+        d: '25', 
+        day: 'СР', 
         t: 'Экскурсия в детейлинг: "Модное Место"', 
         desc: 'Выезд в топ-студию Москвы', 
         type: 'OFFLINE', 
@@ -46,7 +46,7 @@ export const calendarData: CalendarMonth[] = [
         t: 'Мастермайнд', 
         desc: 'Финальный отчет месяца и разборы', 
         type: 'ONLINE', 
-        time: '12:00 MSK' 
+        time: '11:00 MSK' 
       },
     ]
   },

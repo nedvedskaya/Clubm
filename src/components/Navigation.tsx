@@ -1,17 +1,12 @@
 import { useNavigation } from './NavigationContext';
+import { NAV_ITEMS } from './data/constants';
 
 export default function Navigation() {
   const { activePage, navigate } = useNavigation();
-  const navItems = [
-    { id: 'page-home', label: 'Главная' },
-    { id: 'page-club', label: 'Метод' },
-    { id: 'page-course', label: 'Курс' },
-    { id: 'page-masterclass', label: 'МК' },
-  ];
 
   return (
     <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-1 md:gap-1.5 p-1.5 md:p-2 bg-white/95 backdrop-blur-2xl border border-slate-200/60 rounded-full shadow-[0_10px_40px_-5px_rgba(0,0,0,0.12)] w-auto">
-      {navItems.map((item) => (
+      {NAV_ITEMS.map((item) => (
         <button
           key={item.id}
           onClick={() => navigate(item.id)}

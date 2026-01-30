@@ -1,13 +1,14 @@
 import { ArrowUp } from 'lucide-react';
 import { SocialLink } from './ui/social-link';
 import { useScrollTo } from '../hooks/useScrollTo';
+import { CONTACTS } from './data/constants';
 
 export default function Footer() {
   const { scrollToTop } = useScrollTo();
 
   const socialLinks = [
     {
-      href: "https://tlgg.ru/@club_manageer",
+      href: CONTACTS.telegram,
       colorClass: "group-hover:text-[#229ED9]",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -16,7 +17,7 @@ export default function Footer() {
       )
     },
     {
-      href: "https://www.instagram.com/club_managers_/",
+      href: CONTACTS.instagram,
       colorClass: "group-hover:text-[#E1306C]",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -25,7 +26,7 @@ export default function Footer() {
       )
     },
     {
-      href: "https://vk.com/club.managers",
+      href: CONTACTS.vk,
       colorClass: "group-hover:text-[#0077FF]",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -34,7 +35,7 @@ export default function Footer() {
       )
     },
     {
-      href: "https://www.youtube.com/@club_managers",
+      href: CONTACTS.youtube,
       colorClass: "group-hover:text-[#FF0000]",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">

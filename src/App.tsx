@@ -10,7 +10,7 @@ import { YandexMetrica } from './components/YandexMetrica';
 
 // Lazy load pages for performance
 const HomePage = lazy(() => import('./components/HomePage'));
-const ClubPage = lazy(() => import('./components/ClubPage'));
+const MethodPage = lazy(() => import('./components/MethodPage'));
 const CoursePage = lazy(() => import('./components/CoursePage'));
 const MasterclassPage = lazy(() => import('./components/MasterclassPage'));
 
@@ -66,7 +66,7 @@ function AppLayout() {
         <div className="min-h-screen pt-28 md:pt-32 lg:pt-36 pb-14 md:pb-16 lg:pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
           <Suspense fallback={<PageLoader />}>
             {activePage === 'page-home' && <HomePage />}
-            {activePage === 'page-club' && <ClubPage />}
+            {activePage === 'page-club' && <MethodPage />}
             {activePage === 'page-course' && <CoursePage />}
             {activePage === 'page-masterclass' && <MasterclassPage />}
           </Suspense>

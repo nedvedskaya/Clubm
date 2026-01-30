@@ -8,6 +8,8 @@ import { faqData } from './data/faqData';
 import { courseBonuses, whatsInsideData, heroTags, fullAccessFeatures } from './data/course-content';
 import { ShinyButton } from './ui/shiny-button';
 import { CourseModuleCard } from './ui/course-module-card';
+import { BonusCard } from './ui/bonus-card';
+import { CONTACTS } from './data/constants';
 import ResultsSlider from './ResultsSlider';
 import { Check, ChevronsRight } from 'lucide-react';
 import { sanitizeHTML } from '../utils/security';
@@ -135,26 +137,12 @@ export default function CoursePage() {
         
         <div className="grid md:grid-cols-2 gap-6">
           {courseBonuses.map((card, index) => (
-            <div key={index} className="relative bg-gradient-to-b from-[#8E2828] to-[#360808] rounded-[2.5rem] p-8 shadow-xl shadow-[#450a0a]/20 flex flex-col h-full border border-white/10 overflow-hidden group hover:scale-[1.02] transition-transform duration-500">
-               {/* Subtle Top Shine */}
-               <div className="absolute inset-x-0 top-0 h-[200px] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-               
-               <h3 className="relative z-10 text-2xl font-bold text-white mb-8 text-center drop-shadow-md">{card.title}</h3>
-               
-               <div className="relative z-10 space-y-6 flex-1">
-                  {card.items.map((item, idx) => (
-                    <div key={idx} className="flex gap-4 items-start">
-                       <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0 mt-0.5 border border-white/10 shadow-inner">
-                          <Check className="w-4 h-4 text-white" strokeWidth={3} />
-                       </div>
-                       <div>
-                          <h4 className="text-base font-bold text-white mb-0.5 drop-shadow-sm">{item.title}</h4>
-                          <p className="text-white/80 font-medium leading-snug text-sm">{item.text}</p>
-                       </div>
-                    </div>
-                  ))}
-               </div>
-            </div>
+             <BonusCard 
+               key={index} 
+               variant="premium" 
+               title={card.title} 
+               items={card.items} 
+            />
           ))}
         </div>
       </RevealOnScroll>
@@ -188,7 +176,7 @@ export default function CoursePage() {
       </RevealOnScroll>
 
       {/* Modules Grid */}
-      <div id="modules-grid" className="relative max-w-[1200px] mx-auto px-4 mb-0 md:mb-0">
+      <div id="modules-grid" className="relative max-w-[1200px] mx-auto px-4 mb-16 md:mb-24">
         <div className="text-center mb-12 relative">
              <SectionLabel>Обучение</SectionLabel>
              <GradientHeading className="text-6xl md:text-8xl text-[48px]">Программа</GradientHeading>
@@ -211,7 +199,7 @@ export default function CoursePage() {
       </div>
 
       {/* ROI Section - Minimalist & Compact */}
-      <RevealOnScroll className="max-w-[700px] mx-auto mb-16 px-4 pt-0 md:-mt-8">
+      <RevealOnScroll className="max-w-[700px] mx-auto mb-16 px-4 pt-0">
          <div className="relative z-10 flex flex-col items-center text-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-slate-100 mb-5 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
@@ -360,7 +348,7 @@ export default function CoursePage() {
         rateLimitKey="whatsapp-course-contact"
         className="mb-16 max-w-4xl mx-auto"
         subtitle="Мы поможем разобраться"
-        telegramHref="https://tlgg.ru/@club_manageer"
+        telegramHref={CONTACTS.telegram}
         telegramText="НАПИСАТЬ В TELEGRAM"
         buttonText="НАПИСАТЬ В WHATSAPP"
       />
