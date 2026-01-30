@@ -19,6 +19,7 @@ interface MembershipCardProps {
   isPremium?: boolean;
   isHit?: boolean;
   buttonText: string;
+  bottomNote?: React.ReactNode;
   delay?: number;
   onClick?: () => void;
 }
@@ -34,6 +35,7 @@ export function MembershipCard({
   isPremium = false,
   isHit = false,
   buttonText,
+  bottomNote,
   delay = 0,
   onClick
 }: MembershipCardProps) {
@@ -198,6 +200,15 @@ export function MembershipCard({
         >
             {buttonText}
         </ShinyButton>
+        {bottomNote && (
+          <div className="mt-3 text-center">
+            {typeof bottomNote === 'string' ? (
+               <p className={cn("text-xs font-medium", isPremium ? "text-slate-400" : "text-slate-500")}>
+                 {bottomNote}
+               </p>
+            ) : bottomNote}
+          </div>
+        )}
       </div>
 
     </motion.div>

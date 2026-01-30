@@ -1,4 +1,5 @@
 import { AuroraBackground } from "../ui/aurora-background";
+import { ShimmerBadge } from "../ui/shimmer-badge";
 import { ShinyButton } from "../ui/shiny-button";
 import RevealOnScroll from "../RevealOnScroll";
 
@@ -30,25 +31,19 @@ export function MethodHero() {
             {/* Volumetric Badge */}
             <div className="relative group cursor-default mb-10">
                <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-red-900 rounded-full blur opacity-40 group-hover:opacity-60 transition duration-1000"></div>
-               <div className="relative px-6 py-3 rounded-full bg-gradient-to-r from-[#7F1D1D] to-[#450a0a] border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_10px_20px_-5px_rgba(0,0,0,0.5)] flex items-center gap-2 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-200%] animate-[shimmer_4s_infinite_cubic-bezier(0.4,0,0.2,1)]" />
-                  <style>{`
-                    @keyframes shimmer {
-                      0% { transform: translateX(-200%) skewX(-12deg); }
-                      30% { transform: translateX(200%) skewX(-12deg); }
-                      100% { transform: translateX(200%) skewX(-12deg); }
-                    }
-                  `}</style>
-                  <span className="relative z-10 text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.2em] text-red-50 text-shadow-sm">Для собственников автобизнеса</span>
-               </div>
+               <ShimmerBadge variant="brand" className="bg-gradient-to-r from-brand-800 to-brand-900 border-white/10">
+                  Для собственников автобизнеса
+               </ShimmerBadge>
             </div>
 
             {/* Title */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-black uppercase leading-[0.95] tracking-tight mb-8 text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-slate-400 drop-shadow-2xl">
+            <h1 className="sm:text-6xl md:text-7xl font-black uppercase leading-[0.95] tracking-tight mb-8 text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-slate-400 drop-shadow-2xl text-[64px]">
               Метод:<br/>
-              Система<br/>
-              Управления<br/>
-              Прибылью
+              <span className="sm:text-4xl md:text-5xl leading-[0.95] block mt-2 text-[32px]">
+                Система<br/>
+                Управления<br/>
+                Прибылью
+              </span>
             </h1>
 
             {/* Description */}

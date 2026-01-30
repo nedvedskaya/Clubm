@@ -77,7 +77,7 @@ export function BonusCard({
       {/* Icon Indicator */}
       {onClick && (
         <div className="absolute top-6 right-6 z-20">
-          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-[#5F0A0A] group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-1 group-hover:rotate-45">
+          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-brand-900 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-1 group-hover:rotate-45">
              <ArrowUpRight className="w-4 h-4" />
           </div>
         </div>
@@ -85,12 +85,12 @@ export function BonusCard({
 
       <div className="relative z-10 flex flex-col">
          <div className="mb-5 pr-8">
-           <span className="inline-block bg-[#5F0A0A] text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-lg shadow-red-900/20">
+           <span className="inline-block bg-brand-900 text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-lg shadow-brand-900/20">
               {badgeText}
            </span>
          </div>
          
-         <h3 className="text-xl font-extrabold text-slate-900 mb-3 leading-tight group-hover:text-[#5F0A0A] transition-colors duration-300">
+         <h3 className="text-xl font-extrabold text-slate-900 mb-3 leading-tight group-hover:text-brand-900 transition-colors duration-300">
             {title}
          </h3>
          
@@ -98,13 +98,13 @@ export function BonusCard({
             {description}
          </p>
          
-         <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 flex items-center justify-between gap-3 group-hover:border-[#5F0A0A]/20 transition-colors duration-300">
+         <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 flex items-center justify-between gap-3 group-hover:border-brand-900/20 transition-colors duration-300">
             <div>
                 <p className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Стоимость</p>
                 <p className="text-xs font-bold text-slate-400 line-through decoration-slate-400 decoration-1">{oldPrice}</p>
             </div>
             <div className="text-right">
-                 <p className="text-[#7F1D1D] font-bold text-sm">{newPrice}</p>
+                 <p className="text-brand-800 font-bold text-sm">{newPrice}</p>
                  <p className="text-[9px] text-slate-400 font-medium">{newPriceSubtitle}</p>
             </div>
          </div>

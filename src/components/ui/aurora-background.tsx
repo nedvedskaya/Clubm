@@ -20,8 +20,8 @@ export function AuroraBackground({ variant, className, blur }: AuroraBackgroundP
   const variantStyles: Record<AuroraVariant, string> = {
     'blue-soft': "bg-gradient-to-br from-blue-200 to-transparent",
     'blue-glow': "bg-blue-600/20",
-    'red-glow': "bg-[#5F0A0A]/30",
-    'red-intense': "bg-red-900",
+    'red-glow': "bg-brand-900/30",
+    'red-intense': "bg-brand-800",
     'slate': "bg-slate-200",
     'brand-glow': "bg-brand-800",
     'blue-light': "bg-blue-100",

@@ -13,7 +13,7 @@ import { CONTACTS } from './data/constants';
 import ResultsSlider from './ResultsSlider';
 import { Check, ChevronsRight } from 'lucide-react';
 import { sanitizeHTML } from '../utils/security';
-import { CourseTag } from './ui/course-tag';
+import { ShimmerBadge } from './ui/shimmer-badge';
 import { SectionLabel } from './ui/section-label';
 import { GradientHeading } from './ui/gradient-heading';
 import { useNavigation } from './NavigationContext';
@@ -72,13 +72,14 @@ export default function CoursePage() {
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
            {/* Badge */}
-           <div className="relative inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-slate-100 shadow-sm mb-8 z-10">
-              <span className="relative flex h-2.5 w-2.5">
-                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF0000] shadow-[0_0_12px_rgba(255,0,0,0.8)]"></span>
-              </span>
-              <span className="text-[11px] md:text-xs tracking-[0.15em] uppercase text-[rgb(0,0,0)] font-bold">Онлайн-курс</span>
-           </div>
+           <ShimmerBadge variant="white" className="mb-8 z-10 gap-3" icon={
+               <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF0000] shadow-[0_0_12px_rgba(255,0,0,0.8)]"></span>
+               </span>
+           }>
+             Онлайн-курс
+           </ShimmerBadge>
 
            {/* Title */}
            <h1 className="relative flex flex-col items-center w-full mb-8 px-1 z-10 text-center">
@@ -126,7 +127,7 @@ export default function CoursePage() {
       <RevealOnScroll className="max-w-[900px] mx-auto mb-20 px-4">
         <div className="text-center mb-8 relative">
            {/* Ambient Glow */}
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#5F0A0A]/5 blur-[60px] rounded-full pointer-events-none" />
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-brand-900/5 blur-[60px] rounded-full pointer-events-none" />
            
            <GradientHeading className="text-5xl md:text-7xl">Бонусы</GradientHeading>
            
@@ -160,13 +161,13 @@ export default function CoursePage() {
          <div className="grid md:grid-cols-3 gap-4 md:gap-6">
             {whatsInsideData.map((card, idx) => (
               <div key={idx} className="relative bg-white rounded-[2rem] p-6 md:p-8 flex flex-col h-full shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] border border-slate-100 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(95,10,10,0.1)] hover:-translate-y-1 group overflow-hidden">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[4rem] -mr-10 -mt-10 transition-colors duration-500 group-hover:bg-[#5F0A0A]/5" />
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[4rem] -mr-10 -mt-10 transition-colors duration-500 group-hover:bg-brand-900/5" />
                  
-                 <div className="relative w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#5F0A0A] mb-6 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-500">
+                 <div className="relative w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand-900 mb-6 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform duration-500">
                     {card.icon}
                  </div>
                  
-                 <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#5F0A0A] transition-colors duration-300">{card.title}</h3>
+                 <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-brand-900 transition-colors duration-300">{card.title}</h3>
                  <p className="text-slate-500 text-[15px] leading-relaxed font-medium">
                    {card.text}
                  </p>
@@ -207,7 +208,7 @@ export default function CoursePage() {
             </div>
 
             {/* Main Metric */}
-            <h3 className="text-[4.5rem] md:text-[6.5rem] font-black leading-[0.85] tracking-tighter mb-4 bg-gradient-to-b from-[#450a0a] to-[#7F1D1D] bg-clip-text text-transparent drop-shadow-sm select-none transition-transform duration-700 hover:scale-105">
+            <h3 className="text-[4.5rem] md:text-[6.5rem] font-black leading-[0.85] tracking-tighter mb-4 bg-gradient-to-b from-brand-900 to-brand-800 bg-clip-text text-transparent drop-shadow-sm select-none transition-transform duration-700 hover:scale-105">
               1 звонок
             </h3>
 

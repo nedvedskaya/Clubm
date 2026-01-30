@@ -63,7 +63,7 @@ export default function Footer() {
           {/* Scroll To Top Button */}
           <button
             onClick={scrollToTop}
-            className="w-14 h-14 bg-[#5F0A0A] rounded-full flex items-center justify-center text-white shadow-lg shadow-red-900/30 hover:scale-110 transition-transform hover:shadow-xl hover:bg-[#7F1D1D] active:scale-95 border-2 border-white ml-2"
+            className="w-14 h-14 bg-brand-900 rounded-full flex items-center justify-center text-white shadow-lg shadow-brand-900/30 hover:scale-110 transition-transform hover:shadow-xl hover:bg-brand-800 active:scale-95 border-2 border-white ml-2"
             aria-label="Наверх"
           >
             <ArrowUp className="w-6 h-6" strokeWidth={3} />

@@ -93,26 +93,38 @@ export function MembershipSection() {
             price="16 666"
             period="₽/мес"
             totalPrice="200 000 ₽ за 1 год"
-            discount="Макс. выгода"
+            discount="Выгода 33%"
             buttonText="Присоединиться"
+            bottomNote={
+               <span className="text-[11px] font-bold text-indigo-200/70 uppercase tracking-wider hover:text-indigo-200 transition-colors cursor-default">
+                 Возможно оформить рассрочку от банка
+               </span>
+            }
             onClick={() => handleJoin('month_12')}
             features={[
               { text: "Полный доступ на 1 год", highlight: true },
-              { 
-                text: (
-                  <span 
-                    onClick={scrollToBonus}
-                    className="cursor-pointer border-b border-white/30 hover:border-white transition-colors"
-                  >
-                    Онлайн-курс «Профессиональный менеджер»
-                  </span>
-                ), 
-                highlight: true 
-              },
               { text: "24 мастермайнда", highlight: true },
               { text: "Все офлайн-мероприятия" },
               { text: "Доступ к чату предпринимателей" },
               { text: "Доступ к базе знаний" },
+              { 
+                text: (
+                  <span 
+                    onClick={scrollToBonus}
+                    className="flex flex-col gap-1.5 cursor-pointer group/bonus -mt-1 pt-2 border-t border-white/10"
+                  >
+                    <span className="inline-flex items-center gap-1.5">
+                       <span className="text-[9px] font-extrabold bg-gradient-to-r from-amber-200 to-yellow-400 text-amber-950 px-2 py-0.5 rounded shadow-[0_0_15px_rgba(251,191,36,0.4)] tracking-wider uppercase">
+                         Бонус
+                       </span>
+                    </span>
+                    <span className="border-b border-white/30 hover:border-white transition-colors pb-0.5 leading-snug">
+                      Онлайн-курс «Профессиональный менеджер»
+                    </span>
+                  </span>
+                ), 
+                highlight: true 
+              },
             ]} className="font-normal"
           />
         </div>

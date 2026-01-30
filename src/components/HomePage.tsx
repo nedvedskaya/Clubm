@@ -4,6 +4,7 @@ import { ShinyButton } from './ui/shiny-button';
 import { StatusBadge } from './ui/status-badge';
 import { GlassCard } from './ui/glass-card';
 import { SectionTitle } from './ui/section-title';
+import { ShimmerBadge } from './ui/shimmer-badge';
 import { AuroraBackground } from './ui/aurora-background';
 import { useNavigation } from './NavigationContext';
 import { StructuredData } from './StructuredData';
@@ -68,13 +69,10 @@ export default function HomePage() {
              
              <div className="relative z-10">
               <div className="inline-flex relative group cursor-default mb-8">
-                 <div className="relative px-5 py-2.5 rounded-full bg-[#5F0A0A] border border-white/10 shadow-[0_0_20px_rgba(220,38,38,0.3)] flex items-center gap-2 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-shimmer" />
-                    <span className="relative z-10 text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.15em] text-white">Бизнес-сообщество</span>
-                 </div>
+                 <ShimmerBadge variant="brand">Бизнес-сообщество</ShimmerBadge>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-[0.95] tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-slate-400 drop-shadow-2xl">
-                Метод: система управления прибылью
+                Метод: <span className="text-xl sm:text-2xl md:text-3xl">система управления прибылью</span>
               </h2>
               <p className="text-base md:text-lg text-slate-300 font-medium leading-relaxed max-w-2xl mb-8 border-l-2 border-white/10 pl-6">
                 Бизнес-сообщество для предпринимателей в автоиндустрии.
