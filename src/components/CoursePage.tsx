@@ -94,7 +94,7 @@ export default function CoursePage() {
 
            {/* Description */}
            <p className="relative text-slate-500 md:text-lg max-w-lg mx-auto leading-relaxed mb-12 font-medium px-4 z-10 text-[16px]">
-             Система подготовки детейлинг-менеджера под ключ. <span className="text-slate-900 font-semibold text-[15px]">Внедрите стандарты продаж, которые приносят прибыль.</span>
+             Система подготовки детейлинг-менеджера под ключ. <span className="text-slate-900 font-semibold text-[15px]">Внедрите стандарты продаж, которые увеличивают прибыль.</span>
            </p>
 
            {/* Feature Tags - Adaptive Layout */}
