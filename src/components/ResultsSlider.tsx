@@ -1,8 +1,7 @@
 import RevealOnScroll from './RevealOnScroll';
 import result1Image from '../assets/results/result-1.jpg';
 import result2Image from '../assets/results/result-2.jpg';
-
-const screenshot420k = '/assets/97dc793e206f443751a6f77051c2dde251ca13da.png';
+import result3Image from '../assets/results/result-3.jpg';
 
 const cases = [
   {
@@ -27,7 +26,7 @@ const cases = [
     badge: 'Рост в 35 раз',
     was: 'Средний чек по тонировке 6–12 тыс. ₽. Цель — внедрить высокомаржинальные услуги.',
     became: 'Продал оклейку кузова + допы (вмятины, химчистка, шумка, тонировка).',
-    image: screenshot420k,
+    image: result3Image,
   },
   {
     name: 'Павел Сорокин',
