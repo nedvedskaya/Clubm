@@ -4,6 +4,7 @@ import result2Image from '../assets/results/result-2.jpg';
 import result3Image from '../assets/results/result-3.jpg';
 import result4Image from '../assets/results/result-4.jpg';
 import result5Image from '../assets/results/result-5.jpg';
+import result6Image from '../assets/results/result-6.jpg';
 
 const cases = [
   {
@@ -52,6 +53,7 @@ const cases = [
     badge: 'Рост в 1.2 раза',
     was: 'Замена лобового (коммерческий транспорт), чек 95 000 ₽.',
     became: 'Допродал молдинг, обслуживание трапеции, новые дворники и антидождь.',
+    image: result6Image,
   },
   {
     name: 'Светлана Каширина',
