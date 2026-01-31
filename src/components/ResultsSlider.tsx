@@ -9,6 +9,7 @@ import result7Image from '../assets/results/result-7.jpg';
 import result9Image from '../assets/results/result-9.jpg';
 import result10Image from '../assets/results/result-10.jpg';
 import result11Image from '../assets/results/result-11.jpg';
+import result12Image from '../assets/results/result-12.jpg';
 
 const cases = [
   {
@@ -104,6 +105,7 @@ const cases = [
     badge: 'Рост в 31 раз',
     was: 'Изначально клиент приехал удалить царапину с кузова за 5 000 ₽.',
     became: 'Допродали полировку кузова, керамику, химчистку и т.д. Чек вырос до 156 000 ₽.',
+    image: result12Image,
   },
   {
     name: 'Евгений Смолин',
