@@ -1,4 +1,5 @@
 import RevealOnScroll from './RevealOnScroll';
+import result1Image from '../assets/results/result-1.jpg';
 
 const screenshot420k = '/assets/97dc793e206f443751a6f77051c2dde251ca13da.png';
 
@@ -9,6 +10,7 @@ const cases = [
     badge: 'Рост в 2.1 раза',
     was: 'Tiguan L Pro заехал на пакет оклейки зоны риска за 90 тыс (со скидкой).',
     became: 'Допродал: Оклейку порогов (20 тыс), глянцевых стоечек (6 тыс), панорамы (20 тыс), керамику на кузов (35 тыс) и керамику кожи (18 тыс).',
+    image: result1Image,
   },
   {
     name: 'Денис Лысенко',
