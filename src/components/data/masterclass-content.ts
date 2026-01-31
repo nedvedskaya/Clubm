@@ -1,3 +1,9 @@
+import mk4Photo1 from '../../assets/masterclass/mk4-1.jpg';
+import mk4Photo2 from '../../assets/masterclass/mk4-2.jpg';
+import mk4Photo3 from '../../assets/masterclass/mk4-3.jpg';
+import mk4Photo4 from '../../assets/masterclass/mk4-4.jpg';
+import mk4Photo5 from '../../assets/masterclass/mk4-5.jpg';
+
 export const galleryImages = [
   { span: 'md:col-span-2 md:row-span-2', height: 'h-[300px] md:h-auto', label: 'Разбор реальных кейсов', badge: 'Live' },
   { span: '', height: 'h-[300px] md:h-auto' },
@@ -12,13 +18,7 @@ export const pastEvents = [
     title: 'Мастер-класс 4.0',
     location: 'Сколково',
     description: 'Масштабная конференция в технопарке Сколково, где мы разобрали на конкретных примерах услуги детейлинга, звонки, учились делать допродажи и правильно вести клиента.',
-    images: [
-      'https://images.unsplash.com/photo-1714601344981-75e003bc5d18?auto=format&fit=crop&q=80&w=1080', // Glass building
-      'https://images.unsplash.com/photo-1764471444363-e6dc0f9773bc?auto=format&fit=crop&q=80&w=1080', // Conference Hall
-      'https://images.unsplash.com/photo-1574593749297-cb33a69cd8d4?auto=format&fit=crop&q=80&w=1080', // Speaker
-      'https://images.unsplash.com/photo-1550305080-4e029753abcf?auto=format&fit=crop&q=80&w=1080', // Audience
-      'https://images.unsplash.com/photo-1621072147827-cb7c649c8582?auto=format&fit=crop&q=80&w=1080', // Registration
-    ]
+    images: [mk4Photo1, mk4Photo2, mk4Photo3, mk4Photo4, mk4Photo5]
   },
   {
     id: 'mc-3.0',
