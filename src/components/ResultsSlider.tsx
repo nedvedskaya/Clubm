@@ -3,6 +3,7 @@ import result1Image from '../assets/results/result-1.jpg';
 import result2Image from '../assets/results/result-2.jpg';
 import result3Image from '../assets/results/result-3.jpg';
 import result4Image from '../assets/results/result-4.jpg';
+import result5Image from '../assets/results/result-5.jpg';
 
 const cases = [
   {
@@ -43,6 +44,7 @@ const cases = [
     badge: 'Рост в 2.8 раза',
     was: 'Клиент приехал на оклейку зоны риска за 60 000 ₽.',
     became: 'Выяснили потребность в качестве. Продали передний комплекс, двери, крылья и тонировку.',
+    image: result5Image,
   },
   {
     name: 'Максим Мартынов',
