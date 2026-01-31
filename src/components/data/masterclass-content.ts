@@ -12,6 +12,13 @@ import mk3Photo6 from '../../assets/masterclass/mk3-6.jpg';
 import mk3Photo7 from '../../assets/masterclass/mk3-7.jpg';
 import mk3Photo8 from '../../assets/masterclass/mk3-8.jpg';
 import mk3Photo9 from '../../assets/masterclass/mk3-9.jpg';
+import mk2Photo1 from '../../assets/masterclass/mk2-1.jpg';
+import mk2Photo2 from '../../assets/masterclass/mk2-2.jpg';
+import mk2Photo3 from '../../assets/masterclass/mk2-3.jpg';
+import mk2Photo4 from '../../assets/masterclass/mk2-4.jpg';
+import mk2Photo5 from '../../assets/masterclass/mk2-5.jpg';
+import mk2Photo6 from '../../assets/masterclass/mk2-6.jpg';
+import mk2Photo7 from '../../assets/masterclass/mk2-7.jpg';
 
 export const galleryImages = [
   { span: 'md:col-span-2 md:row-span-2', height: 'h-[300px] md:h-auto', label: 'Разбор реальных кейсов', badge: 'Live' },
@@ -41,12 +48,6 @@ export const pastEvents = [
     title: 'Мастер-класс 2.0',
     location: 'Практикум',
     description: 'Приглашенные спикеры и гости, разборы кейсов участников, ответы на волнующие вопросы собственников и менеджеров.',
-    images: [
-      'https://images.unsplash.com/photo-1735361039382-d78a0a0cc185?auto=format&fit=crop&q=80&w=1080', // Workshop
-      'https://images.unsplash.com/photo-1761934658112-80095148fe87?auto=format&fit=crop&q=80&w=1080', // Hands close up
-      'https://images.unsplash.com/photo-1626037032364-b0dd4f9aa5f9?auto=format&fit=crop&q=80&w=1080', // Garage interior
-      'https://images.unsplash.com/photo-1624884269715-70759892cd29?auto=format&fit=crop&q=80&w=1080', // Supplies
-      'https://images.unsplash.com/photo-1619642737579-a7474bee1044?auto=format&fit=crop&q=80&w=1080', // Mechanic explaining
-    ]
+    images: [mk2Photo1, mk2Photo2, mk2Photo3, mk2Photo4, mk2Photo5, mk2Photo6, mk2Photo7]
   }
 ];
