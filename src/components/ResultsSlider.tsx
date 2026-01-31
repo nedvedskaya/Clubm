@@ -1,5 +1,6 @@
 import RevealOnScroll from './RevealOnScroll';
 import result1Image from '../assets/results/result-1.jpg';
+import result2Image from '../assets/results/result-2.jpg';
 
 const screenshot420k = '/assets/97dc793e206f443751a6f77051c2dde251ca13da.png';
 
@@ -18,6 +19,7 @@ const cases = [
     badge: 'Рост в 15 раз',
     was: 'BMW приехал на удаление вмятин с бюджетом ~ 300$ (25 000 ₽).',
     became: 'После осмотра продал полный комплекс: покраску бампера, химчистку, кожу, полировку и пленку.',
+    image: result2Image,
   },
   {
     name: 'Евгений Кайнелайнен',
