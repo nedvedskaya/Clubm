@@ -7,6 +7,7 @@ import result5Image from '../assets/results/result-5.jpg';
 import result6Image from '../assets/results/result-6.jpg';
 import result7Image from '../assets/results/result-7.jpg';
 import result9Image from '../assets/results/result-9.jpg';
+import result10Image from '../assets/results/result-10.jpg';
 
 const cases = [
   {
@@ -86,6 +87,7 @@ const cases = [
     badge: 'Рост в 12 раз',
     was: 'Запись на тонер 7 500 ₽.',
     became: 'После работы менеджера чек повысили до 50 000 ₽, также сразу записали клиента на повторный приезд на 45 000 ₽.',
+    image: result10Image,
   },
   {
     name: 'Павел Сорокин',
