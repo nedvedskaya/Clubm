@@ -12,6 +12,7 @@ import result10Image from '../assets/results/result-10.jpg';
 import result11Image from '../assets/results/result-11.jpg';
 import result12Image from '../assets/results/result-12.jpg';
 import result13Image from '../assets/results/result-13.jpg';
+import resultCourseNewImage from '../assets/results/result-course-new.jpg';
 
 const cases = [
   {
@@ -117,6 +118,14 @@ const cases = [
     was: 'Продал оклейку кузова и оптики за 370 000 ₽.',
     became: 'Предложил клиенту доп. услуги: тонировка, шумоизоляция. Чек вырос до 455 000 ₽.',
     image: result13Image,
+  },
+  {
+    name: 'Евгений Кайнелайнен',
+    result: '340 000 ₽',
+    badge: 'Рост в 1.8 раза',
+    was: 'Изначально записали клиента на 190 тыс.',
+    became: 'С помощью обратной связи нашего менеджера Дмитрия в режиме онлайн помогли допродать клиенту услуги и увеличили чек до 340 000 ₽.',
+    image: resultCourseNewImage,
   },
 ];
 
