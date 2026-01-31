@@ -1,8 +1,19 @@
 import React from "react";
 import RevealOnScroll from "../RevealOnScroll";
 import { StatusBadge } from "./status-badge";
-import { CheckListItem } from "./check-list-item";
 import { ShinyButton } from "./shiny-button";
+import { Check } from "lucide-react";
+
+function CheckListItem({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex items-start gap-3 text-sm text-slate-700">
+      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+        <Check className="w-3 h-3 text-green-600" />
+      </span>
+      <span>{children}</span>
+    </li>
+  );
+}
 import { CourseModule } from "../data/courseModules";
 import { sanitizeHTML } from "../../utils/security";
 
