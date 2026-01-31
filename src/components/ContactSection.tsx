@@ -1,7 +1,7 @@
 import React from 'react';
 import RevealOnScroll from './RevealOnScroll';
 import SecureLink from './SecureLink';
-import { cn } from './ui/utils';
+import { cn } from '@/lib/utils';
 
 interface ContactSectionProps {
   title?: string;
