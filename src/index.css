@@ -2070,7 +2070,7 @@
   }
 
   .bg-\[url\(\'https\:\/\/grainy-gradients\.vercel\.app\/noise\.svg\'\)\] {
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    background-image: url("/assets/noise.svg");
   }
 
   .\!from-\[\#8E2828\] {

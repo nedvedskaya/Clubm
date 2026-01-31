@@ -25,7 +25,7 @@ export function MethodHero() {
          />
          
          {/* Subtle noise texture */}
-         <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+         <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none bg-[url('/assets/noise.svg')]"></div>
 
          <div className="relative z-10 flex flex-col items-start max-w-2xl">
             {/* Volumetric Badge */}

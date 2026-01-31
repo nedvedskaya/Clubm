@@ -38,7 +38,7 @@ export function ClubCalendarWidget({ onOpenCalendar }: ClubCalendarWidgetProps) 
                className="absolute bottom-0 left-0 w-[250px] h-[250px] -ml-10 -mb-10 mix-blend-screen" 
                blur="blur-[60px]" 
              />
-             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none bg-[url('/assets/noise.svg')]"></div>
 
              <div className="relative z-10 flex flex-col h-full">
                 {/* Header - Badge Only */}
