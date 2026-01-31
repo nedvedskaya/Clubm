@@ -162,7 +162,9 @@ export default function ResultsSlider() {
                 <img
                   src={caseItem.image || `https://placehold.co/600x800/e2e8f0/64748b?text=Скриншот+${index + 1}`}
                   alt={`Скриншот ${caseItem.name}`}
-                  loading="lazy"
+                  loading={index < 3 ? "eager" : "lazy"}
+                  fetchPriority={index < 2 ? "high" : "auto"}
+                  decoding="async"
                   width="340"
                   height="425"
                   className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"

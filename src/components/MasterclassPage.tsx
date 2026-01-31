@@ -87,7 +87,11 @@ export default function MasterclassPage() {
                        <img 
                          src={img} 
                          alt={`${event.title} фото ${imgIdx + 1}`}
-                         loading="lazy"
+                         loading={index === 0 && imgIdx < 2 ? "eager" : "lazy"}
+                         fetchPriority={index === 0 && imgIdx < 2 ? "high" : "auto"}
+                         decoding="async"
+                         width="450"
+                         height="320"
                          className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                        />
                        {/* Gradient overlay for better depth */}
