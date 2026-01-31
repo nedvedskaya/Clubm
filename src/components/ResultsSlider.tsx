@@ -8,6 +8,7 @@ import result6Image from '../assets/results/result-6.jpg';
 import result7Image from '../assets/results/result-7.jpg';
 import result9Image from '../assets/results/result-9.jpg';
 import result10Image from '../assets/results/result-10.jpg';
+import result11Image from '../assets/results/result-11.jpg';
 
 const cases = [
   {
@@ -95,6 +96,7 @@ const cases = [
     badge: 'Рост в 1.2 раза',
     was: 'Полная оклейка в глянец за 210 000 ₽.',
     became: 'Предложили клиенту дополнительные услуги. В результате чек вырос до 265 000 ₽.',
+    image: result11Image,
   },
   {
     name: 'Юрий Сидоров',
