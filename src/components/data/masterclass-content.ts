@@ -3,6 +3,15 @@ import mk4Photo2 from '../../assets/masterclass/mk4-2.jpg';
 import mk4Photo3 from '../../assets/masterclass/mk4-3.jpg';
 import mk4Photo4 from '../../assets/masterclass/mk4-4.jpg';
 import mk4Photo5 from '../../assets/masterclass/mk4-5.jpg';
+import mk3Photo1 from '../../assets/masterclass/mk3-1.jpg';
+import mk3Photo2 from '../../assets/masterclass/mk3-2.jpg';
+import mk3Photo3 from '../../assets/masterclass/mk3-3.jpg';
+import mk3Photo4 from '../../assets/masterclass/mk3-4.jpg';
+import mk3Photo5 from '../../assets/masterclass/mk3-5.jpg';
+import mk3Photo6 from '../../assets/masterclass/mk3-6.jpg';
+import mk3Photo7 from '../../assets/masterclass/mk3-7.jpg';
+import mk3Photo8 from '../../assets/masterclass/mk3-8.jpg';
+import mk3Photo9 from '../../assets/masterclass/mk3-9.jpg';
 
 export const galleryImages = [
   { span: 'md:col-span-2 md:row-span-2', height: 'h-[300px] md:h-auto', label: 'Разбор реальных кейсов', badge: 'Live' },
@@ -25,13 +34,7 @@ export const pastEvents = [
     title: 'Мастер-класс 3.0',
     location: 'VIP Party',
     description: 'Закрытая встреча для лидеров рынка автоиндустрии. Выступления спикеров. Нетворкинг в неформальной обстановке, обмен опытом и новые партнерства.',
-    images: [
-      'https://images.unsplash.com/photo-1695128861516-d9b48461c04c?auto=format&fit=crop&q=80&w=1080', // Rooftop party
-      'https://images.unsplash.com/photo-1597329204992-214518c367b3?auto=format&fit=crop&q=80&w=1080', // Toasting
-      'https://images.unsplash.com/photo-1760662503661-5f3781cd2a87?auto=format&fit=crop&q=80&w=1080', // Atmosphere
-      'https://images.unsplash.com/photo-1675716921224-e087a0cca69a?auto=format&fit=crop&q=80&w=1080', // Networking
-      'https://images.unsplash.com/photo-1690992375579-0a91942e9dc3?auto=format&fit=crop&q=80&w=1080', // Night club blur
-    ]
+    images: [mk3Photo1, mk3Photo2, mk3Photo3, mk3Photo4, mk3Photo5, mk3Photo6, mk3Photo7, mk3Photo8, mk3Photo9]
   },
   {
     id: 'mc-2.0',
