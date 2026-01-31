@@ -6,6 +6,7 @@ import result4Image from '../assets/results/result-4.jpg';
 import result5Image from '../assets/results/result-5.jpg';
 import result6Image from '../assets/results/result-6.jpg';
 import result7Image from '../assets/results/result-7.jpg';
+import result9Image from '../assets/results/result-9.jpg';
 
 const cases = [
   {
@@ -77,6 +78,7 @@ const cases = [
     badge: 'Рост в 1.9 раза',
     was: 'Защита пленкой (~ 70 000 ₽).',
     became: 'Согласились на тонировку, керамику, пленку на лобовое и сетку.',
+    image: result9Image,
   },
   {
     name: 'Евгений Кайнелайнен',
