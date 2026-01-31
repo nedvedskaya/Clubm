@@ -1,0 +1,1 @@
+import{j as s,c as l}from"./index-C-h5SkiX.js";function r({children:t,className:e,as:x="h2",centered:a=!1,...n}){return s.jsx(x,{className:l("font-extrabold text-slate-900 uppercase tracking-tight leading-none","text-3xl md:text-4xl lg:text-5xl",a&&"text-center mx-auto",e),...n,children:t})}export{r as S};
