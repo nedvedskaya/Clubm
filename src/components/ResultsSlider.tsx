@@ -5,6 +5,7 @@ import result3Image from '../assets/results/result-3.jpg';
 import result4Image from '../assets/results/result-4.jpg';
 import result5Image from '../assets/results/result-5.jpg';
 import result6Image from '../assets/results/result-6.jpg';
+import result7Image from '../assets/results/result-7.jpg';
 
 const cases = [
   {
@@ -61,6 +62,7 @@ const cases = [
     badge: 'Успешная сделка',
     was: 'Полная оклейка, возражение «дорого».',
     became: 'Продали пакет: тонировка, керамика, бронепленка на лобовое и сетка на бампер.',
+    image: result7Image,
   },
   {
     name: 'Павел Сорокин',
