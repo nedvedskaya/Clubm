@@ -2,6 +2,7 @@ import RevealOnScroll from './RevealOnScroll';
 import result1Image from '../assets/results/result-1.jpg';
 import result2Image from '../assets/results/result-2.jpg';
 import result3Image from '../assets/results/result-3.jpg';
+import result4Image from '../assets/results/result-4.jpg';
 
 const cases = [
   {
@@ -34,6 +35,7 @@ const cases = [
     badge: 'Рост в 1.8 раза',
     was: 'До Клуба чек на услуги доходил до 200 000 – 250 000 ₽.',
     became: 'Уверенная продажа на 373 000 ₽.',
+    image: result4Image,
   },
   {
     name: 'Евгений Кайнелайнен',
