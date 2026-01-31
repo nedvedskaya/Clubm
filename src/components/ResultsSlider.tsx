@@ -10,6 +10,7 @@ import result9Image from '../assets/results/result-9.jpg';
 import result10Image from '../assets/results/result-10.jpg';
 import result11Image from '../assets/results/result-11.jpg';
 import result12Image from '../assets/results/result-12.jpg';
+import result13Image from '../assets/results/result-13.jpg';
 
 const cases = [
   {
@@ -113,6 +114,7 @@ const cases = [
     badge: 'Рост в 1.2 раза',
     was: 'Продал оклейку кузова и оптики за 370 000 ₽.',
     became: 'Предложил клиенту доп. услуги: тонировка, шумоизоляция. Чек вырос до 455 000 ₽.',
+    image: result13Image,
   },
 ];
 
