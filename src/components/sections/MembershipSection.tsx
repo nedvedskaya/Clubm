@@ -53,11 +53,12 @@ export function MembershipSection() {
             subtitle="Идеально для первого знакомства с форматом сообщества."
             price="25 000"
             period="₽/мес"
-            totalPrice="Оплата помесячно"
+            totalPrice="25 000 ₽ за 1 месяц"
             buttonText="Начать"
             onClick={() => handleJoin('month_1')}
             features={[
-              { text: "2 текущих мастермайнда" },
+              { text: "Доступ к сообществу на 1 месяц" },
+              { text: "2 мастермайнда" },
               { text: "Офлайн мероприятия месяца" },
               { text: "Доступ к чату предпринимателей" },
               { text: "Доступ к базе знаний" },
@@ -76,9 +77,9 @@ export function MembershipSection() {
             buttonText="Внедрить"
             onClick={() => handleJoin('month_6')}
             features={[
-              { text: "Все привилегии сообщества на 6 месяцев", highlight: true },
-              { text: "12 мастермайндов с разборами" },
-              { text: "Все офлайн-мероприятия" },
+              { text: "Доступ к сообществу на 6 месяцев", highlight: true },
+              { text: "12 мастермайндов" },
+              { text: "Посещение всех офлайн-мероприятий" },
               { text: "Доступ к чату предпринимателей" },
               { text: "Доступ к базе знаний" },
             ]}
@@ -92,7 +93,7 @@ export function MembershipSection() {
             subtitle="Полная трансформация бизнеса, личная стратегия масштабирования и окружение."
             price="16 666"
             period="₽/мес"
-            totalPrice="200 000 ₽ за 1 год"
+            totalPrice="200 000 ₽ за 12 месяцев"
             discount="Выгода 33%"
             buttonText="Присоединиться"
             bottomNote={
@@ -102,9 +103,9 @@ export function MembershipSection() {
             }
             onClick={() => handleJoin('month_12')}
             features={[
-              { text: "Полный доступ на 1 год", highlight: true },
+              { text: "Доступ к сообществу на 12 месяцев", highlight: true },
               { text: "24 мастермайнда", highlight: true },
-              { text: "Все офлайн-мероприятия" },
+              { text: "Посещение всех офлайн-мероприятий" },
               { text: "Доступ к чату предпринимателей" },
               { text: "Доступ к базе знаний" },
               { 

@@ -188,7 +188,7 @@ export default function CoursePage() {
          </div>
         
         <div className="md:hidden text-center mb-6">
-            <span className="text-xs text-slate-400 uppercase tracking-widest font-medium">Свайп для просмотра</span>
+            <span className="text-xs text-slate-400 uppercase tracking-widest font-medium">Свайп для просмотра →</span>
         </div>
         
         <div className="flex overflow-x-auto snap-x snap-proximity hide-scroll gap-4 pb-4 md:gap-6 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible px-4 md:px-0 -mx-4 md:mx-0">
