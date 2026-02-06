@@ -92,7 +92,7 @@ export function MembershipSection() {
         </div>
 
         {/* BONUS BLOCK */}
-        <div id="bonus-block" className="max-w-7xl mx-auto px-2 mt-8 lg:mt-12 relative z-10 flex flex-col items-end">
+        <div id="bonus-block" className="max-w-7xl mx-auto px-2 mt-8 lg:mt-12 relative z-10 flex flex-col items-center">
             <BonusCard 
               onClick={() => navigate('page-course')}
               title={<>Онлайн-курс <br/>«Профессиональный менеджер»</>}
