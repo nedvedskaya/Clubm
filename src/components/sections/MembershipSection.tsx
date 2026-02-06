@@ -45,46 +45,7 @@ export function MembershipSection() {
             </SectionTitle>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-2 relative z-10">
-          {/* 1 MONTH - THE SPARK */}
-          <MembershipCard
-            delay={0.1}
-            title="Старт"
-            subtitle="Идеально для первого знакомства с форматом сообщества."
-            price="25 000"
-            period="₽/мес"
-            totalPrice="25 000 ₽ за 1 месяц"
-            buttonText="Начать"
-            onClick={() => handleJoin('month_1')}
-            features={[
-              { text: "Доступ к сообществу на 1 месяц" },
-              { text: "2 мастермайнда" },
-              { text: "Офлайн мероприятия месяца" },
-              { text: "Доступ к чату предпринимателей" },
-              { text: "Доступ к базе знаний" },
-            ]} className="text-[48px] font-normal"
-          />
-
-          {/* 6 MONTHS - THE SYSTEM */}
-          <MembershipCard
-            delay={0.2}
-            title="Система"
-            subtitle="Для тех, кто готов внедрять инструменты и расти системно."
-            price="21 666"
-            period="₽/мес"
-            totalPrice="130 000 ₽ за 6 месяцев"
-            discount="Выгода 15%"
-            buttonText="Внедрить"
-            onClick={() => handleJoin('month_6')}
-            features={[
-              { text: "Доступ к сообществу на 6 месяцев", highlight: true },
-              { text: "12 мастермайндов" },
-              { text: "Посещение всех офлайн-мероприятий" },
-              { text: "Доступ к чату предпринимателей" },
-              { text: "Доступ к базе знаний" },
-            ]}
-          />
-
+        <div className="flex justify-center max-w-7xl mx-auto px-2 relative z-10">
           {/* 12 MONTHS - THE LEGACY */}
           <MembershipCard
             delay={0.3}
