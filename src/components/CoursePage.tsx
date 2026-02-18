@@ -303,7 +303,7 @@ export default function CoursePage() {
                         Приобрести доступ
                      </ShinyButton>
 
-                     <label className="flex items-start gap-2.5 mt-5 cursor-pointer select-none group/oferta">
+                     <label className="flex items-start gap-2.5 mt-8 cursor-pointer select-none group/oferta">
                         <input
                           type="checkbox"
                           defaultChecked={true}
@@ -315,7 +315,7 @@ export default function CoursePage() {
                             href="https://da-school.online/oferta"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#8E2828] underline underline-offset-2 hover:text-[#6b1f1f] transition-colors"
+                            className="text-[#8E2828] font-bold underline underline-offset-2 hover:text-[#6b1f1f] transition-colors"
                           >
                             договора оферты
                           </a>
