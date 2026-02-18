@@ -302,6 +302,25 @@ export default function CoursePage() {
                      >
                         Приобрести доступ
                      </ShinyButton>
+
+                     <label className="flex items-start gap-2.5 mt-5 cursor-pointer select-none group/oferta">
+                        <input
+                          type="checkbox"
+                          defaultChecked={true}
+                          className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#8E2828] accent-[#8E2828] cursor-pointer shrink-0"
+                        />
+                        <span className="text-[11px] text-slate-400 leading-snug text-left">
+                          Нажимая кнопку, вы соглашаетесь с условиями{' '}
+                          <a
+                            href="https://da-school.online/oferta"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#8E2828] underline underline-offset-2 hover:text-[#6b1f1f] transition-colors"
+                          >
+                            договора оферты
+                          </a>
+                        </span>
+                     </label>
                   </div>
               </div>
 
