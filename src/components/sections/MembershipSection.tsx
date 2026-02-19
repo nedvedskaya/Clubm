@@ -59,9 +59,6 @@ export function MembershipSection() {
             buttonText="Присоединиться"
             bottomNote={
                <div className="flex flex-col items-center gap-4">
-                 <span className="text-[11px] font-bold text-indigo-200/70 uppercase tracking-wider hover:text-indigo-200 transition-colors cursor-default">
-                   Возможно оформить рассрочку от банка
-                 </span>
                  <label className="flex items-start gap-2.5 cursor-pointer select-none">
                    <input
                      type="checkbox"
@@ -80,6 +77,9 @@ export function MembershipSection() {
                      </a>
                    </span>
                  </label>
+                 <span className="text-[11px] font-bold text-indigo-200/70 uppercase tracking-wider hover:text-indigo-200 transition-colors cursor-default">
+                   Возможно оформить рассрочку от банка
+                 </span>
                </div>
             }
             onClick={() => handleJoin('month_12')}
