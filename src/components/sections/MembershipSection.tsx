@@ -58,9 +58,29 @@ export function MembershipSection() {
             discount="Выгода 33%"
             buttonText="Присоединиться"
             bottomNote={
-               <span className="text-[11px] font-bold text-indigo-200/70 uppercase tracking-wider hover:text-indigo-200 transition-colors cursor-default">
-                 Возможно оформить рассрочку от банка
-               </span>
+               <div className="flex flex-col items-center gap-4">
+                 <span className="text-[11px] font-bold text-indigo-200/70 uppercase tracking-wider hover:text-indigo-200 transition-colors cursor-default">
+                   Возможно оформить рассрочку от банка
+                 </span>
+                 <label className="flex items-start gap-2.5 cursor-pointer select-none">
+                   <input
+                     type="checkbox"
+                     defaultChecked={true}
+                     className="mt-0.5 w-4 h-4 rounded border-white/30 accent-indigo-400 cursor-pointer shrink-0"
+                   />
+                   <span className="text-[11px] text-slate-400 leading-snug text-left">
+                     Нажимая кнопку, вы соглашаетесь с условиями{' '}
+                     <a
+                       href="https://da-school.online/oferta_metod"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-indigo-300 font-bold underline underline-offset-2 hover:text-indigo-200 transition-colors"
+                     >
+                       договора оферты
+                     </a>
+                   </span>
+                 </label>
+               </div>
             }
             onClick={() => handleJoin('month_12')}
             features={[
